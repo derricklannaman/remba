@@ -1,0 +1,26 @@
+%h2 User Sign up
+= form_for @user, url: user_registration_path do |f|
+  = devise_error_messages!
+  .field
+    = f.label :stylist, "Yes, I am a fashion stylist"
+    %br/
+    = f.check_box :stylist
+
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .actions
+    = f.submit "Sign up"
+= render "user/shared/links"
