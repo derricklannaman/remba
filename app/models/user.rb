@@ -10,10 +10,8 @@ class User < ActiveRecord::Base
   after_create :create_dashboard_and_fashion_board
 
   def create_dashboard_and_fashion_board
-    if is_stylist?
-      Dashboard.create(user_id: self.id)
-      # create fashionboard here
-    end
+    Fashionboard.create(user_id: self.id)
+    Dashboard.create(user_id: self.id) if is_stylist?
   end
 
   def is_stylist?

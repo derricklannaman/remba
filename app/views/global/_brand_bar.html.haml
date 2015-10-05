@@ -1,13 +1,11 @@
 %nav.navbar.navbar-default.navbar-static-top
   .container
 
+  %h3.brand
+    = link_to "remba", root_path
   - if user_signed_in?
-    .brand= "remba"
-    / add other links here for a signed in user
     = link_to "sign out", destroy_user_session_path, method: :delete
-    =# render 'shared/stylist_action_navigation'
   - else
-    %span.brand= "remba"
     %span= link_to "How it works", "#"
     |
     %span= link_to "About", "#"
