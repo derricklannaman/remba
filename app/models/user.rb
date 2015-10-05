@@ -7,12 +7,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :create_dashboard
+  after_create :create_dashboard_and_fashion_board
 
-  def create_dashboard
-     if is_stylist?
+  def create_dashboard_and_fashion_board
+    if is_stylist?
       Dashboard.create(user_id: self.id)
-     end
+      # create fashionboard here
+    end
   end
 
   def is_stylist?
