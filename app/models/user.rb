@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   end
 
   def create_dashboard
-    Dashboard.create(user_id: self.id) if is_stylist?
+    id = self.id
+    Dashboard.create(user_id: id, stylist_id: id ) if is_stylist?
   end
 
   def is_stylist?
