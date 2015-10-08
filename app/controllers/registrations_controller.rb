@@ -7,33 +7,22 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     if a_stylist?
       @user = Stylist.new(user_params)
-      if @user.save
-        sign_in_and_redirect @user
-      end
     elsif a_member?
       @user = Member.new(user_params)
-      if @user.save
-        sign_in_and_redirect @user
-      end
-    else
-      render :new
     end
+    save_and_redirect_user
   end
 
 
   private
 
-
-
-  # def after_sign_in_path_for resource
-  #   if resource.present? && (resource.is_a? Stylist)
-  #     dashboard_path
-  #   elsif resource.present? && (resource.is_a? Member)
-  #     fashionboard_path
-  #   else
-  #     root_path
-  #   end
-  # end
+  def save_and_redirect_user
+    if @user.save
+      sign_in_and_redirect @user
+    else
+      render :new
+    end
+  end
 
   def a_member?
     params[:user][:stylist] == '0'
