@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "dashboard" => "dashboards#show", as: "dashboard"
   get "fashionboard" => "fashionboards#show", as: "fashionboard"
+  get "adviceboard" => "adviceboards#show", as: "adviceboard"
 
   resources :profiles, only: [:index, :new, :create, :show, :edit]
 

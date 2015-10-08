@@ -11,17 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005135955) do
+ActiveRecord::Schema.define(version: 20151007202941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dashboards", force: :cascade do |t|
+  create_table "adviceboards", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "adviceboards", ["user_id"], name: "index_adviceboards_on_user_id", using: :btree
+
+  create_table "dashboards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "stylist_id"
+  end
+
+  add_index "dashboards", ["stylist_id"], name: "index_dashboards_on_stylist_id", using: :btree
   add_index "dashboards", ["user_id"], name: "index_dashboards_on_user_id", using: :btree
 
   create_table "fashionboards", force: :cascade do |t|
@@ -33,8 +43,6 @@ ActiveRecord::Schema.define(version: 20151005135955) do
   add_index "fashionboards", ["user_id"], name: "index_fashionboards_on_user_id", using: :btree
 
   create_table "members", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,8 +59,6 @@ ActiveRecord::Schema.define(version: 20151005135955) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "stylists", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +77,7 @@ ActiveRecord::Schema.define(version: 20151005135955) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "stylist"
+    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

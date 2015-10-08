@@ -1,7 +1,8 @@
 class FashionboardsController < ApplicationController
 
-  def show
+  before_action :authenticate_user!
 
+  def show
   end
 
 end
