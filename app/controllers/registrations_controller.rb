@@ -5,11 +5,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save && is_a_stylist?
-      redirect_to dashboard_path
-    elsif @user.save && is_a_member?
-      redirect_to fashionboard_path
+    if a_stylist?
+      @user = Stylist.new(user_params)
+      if @user.save
+        sign_in_and_redirect @user
+      end
+    elsif a_member?
+      @user = Member.new(user_params)
+      if @user.save
+        sign_in_and_redirect @user
+      end
     else
       render :new
     end
@@ -18,11 +23,23 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def is_a_member?
+
+
+  # def after_sign_in_path_for resource
+  #   if resource.present? && (resource.is_a? Stylist)
+  #     dashboard_path
+  #   elsif resource.present? && (resource.is_a? Member)
+  #     fashionboard_path
+  #   else
+  #     root_path
+  #   end
+  # end
+
+  def a_member?
     params[:user][:stylist] == '0'
   end
 
-  def is_a_stylist?
+  def a_stylist?
     params[:user][:stylist] == '1'
   end
 
