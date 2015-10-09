@@ -6,16 +6,15 @@ class ApplicationController < ActionController::Base
   devise_group :stylist, contains: [:user]
 
   def after_sign_in_path_for resource
-    if resource.present? && (resource.is_a? Stylist)
-      dashboard_path
-    elsif resource.present? && (resource.is_a? Member)
-      fashionboard_path
+    if resource.present?
+      if resource.is_a? Stylist
+        dashboard_path
+      elsif resource.is_a? Member
+        fashionboard_path
+      end
     else
       root_path
     end
   end
-
-
-
 
 end
