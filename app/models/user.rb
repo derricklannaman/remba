@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :dashboard, dependent: :destroy
+  has_one :fashionboard, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
