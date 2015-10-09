@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   devise_group :stylist, contains: [:user]
+  devise_group :member, contains: [:user]
 
   def after_sign_in_path_for resource
     if resource.present?
