@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get "adviceboard" => "adviceboards#show", as: "adviceboard"
 
   resources :profiles, only: [:index, :new, :create, :show, :edit]
-
+  resources :stylists, only: [:index]
 end
