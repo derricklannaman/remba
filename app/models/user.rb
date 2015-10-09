@@ -11,11 +11,16 @@ class User < ActiveRecord::Base
 
   def create_user_boards
     create_fashionboard
+    create_team
     create_dashboard
   end
 
   def create_fashionboard
     Fashionboard.create(user_id: self.id) if is_member?
+  end
+
+  def create_team
+    Team.create(member_id: self.id, count: 0) if is_member?
   end
 
   def create_dashboard

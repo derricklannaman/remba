@@ -1,9 +1,10 @@
 %h1 Your Fashionboard
+= current_member.email
 .container
  .team-panel
   %h4 Create your fashion team
-  %p You don't have any team mem yet
-  = link_to "Add Stylist", new_team_path, class: "btn btn-warning"
+  %p= "You have #{@team_count} stylist on your team"
+  =# link_to "Add Stylist", new_team_path, class: "btn btn-warning"
 
 %p You don't have any fashion entries yet
 
