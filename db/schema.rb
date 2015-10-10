@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009142101) do
+ActiveRecord::Schema.define(version: 20151009231859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_codes", force: :cascade do |t|
+    t.integer  "access_code"
+    t.integer  "stylist_id"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "access_codes", ["stylist_id"], name: "index_access_codes_on_stylist_id", using: :btree
+  add_index "access_codes", ["team_id"], name: "index_access_codes_on_team_id", using: :btree
 
   create_table "adviceboards", force: :cascade do |t|
     t.integer  "user_id"

@@ -1,20 +1,20 @@
 # == Schema Information
 #
-# Table name: profiles
+# Table name: access_codes
 #
 #  id          :integer          not null, primary key
-#  user_id     :integer
-#  name        :string
-#  photo       :string
-#  description :text
+#  access_code :integer
+#  stylist_id  :integer
+#  team_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 FactoryGirl.define do
-  factory :profile do
-    user_id 1
-name "MyString"
+  factory :access_code do
+    access_code 1
+stylist_id 1
+team_id 1
   end
 
 end
