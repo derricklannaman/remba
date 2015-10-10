@@ -1,10 +1,20 @@
 .team-panel {
   border: 1px solid #BBB;
-  min-height: 200px
+  min-height: 200px;
+  float: left;
+  width: 100%;
 }
 
 .stylist-index {
   border: 1px solid #BBB;
   min-height: 150px;
   margin-top: 10px;
+}
+
+.stylist-fashionboard-panel {
+  border: 1px solid #BBB;
+  height: 250px;
+  width: 200px;
+  margin: 10px;
+  float: left;
 }
