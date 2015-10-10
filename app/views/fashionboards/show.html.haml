@@ -4,7 +4,11 @@
  .team-panel
   %h4 Create your fashion team
   %p= "You have #{@team_count} stylist on your team"
-  = link_to "Add Stylist", stylists_path, class: "btn btn-warning"
+  / move to helper
+  - if @team_count < 3
+   = link_to "Add Stylist", stylists_path, class: "btn btn-warning"
+  - else
+   = link_to "Add Stylist", stylists_path, class: "btn btn-default disabled"
 
   %div
    - @stylists.each do |stylist|
