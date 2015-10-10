@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "fashionboard" => "fashionboards#show", as: "fashionboard"
   get "adviceboard" => "adviceboards#show", as: "adviceboard"
 
+  get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
+
   resources :profiles, only: [:index, :new, :create, :show, :edit]
   resources :stylists, only: [:index]
 end

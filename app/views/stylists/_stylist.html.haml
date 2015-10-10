@@ -1,5 +1,6 @@
 
 .container.stylist-index
   = stylist.email
+
   %div
-    = link_to "Add to Team", "#", class: "btn btn-default"
+    = link_to "Add to Team", add_stylist_path(id: stylist.id, ), class: "btn btn-default"
