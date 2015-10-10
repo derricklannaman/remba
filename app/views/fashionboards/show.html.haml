@@ -6,6 +6,13 @@
   %p= "You have #{@team_count} stylist on your team"
   = link_to "Add Stylist", stylists_path, class: "btn btn-warning"
 
+  %div
+   - @stylists.each do |stylist|
+    .stylist-fashionboard-panel
+     .row
+      %p
+       = stylist.email
+
 %p You don't have any fashion entries yet
 
 
