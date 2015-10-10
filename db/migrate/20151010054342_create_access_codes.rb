@@ -1,7 +1,7 @@
 class CreateAccessCodes < ActiveRecord::Migration
   def change
     create_table :access_codes do |t|
-      t.integer :access_code
+      t.string :access_code
       t.integer :stylist_id
       t.integer :team_id
 
