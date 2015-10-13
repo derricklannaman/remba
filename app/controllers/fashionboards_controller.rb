@@ -15,7 +15,6 @@ class FashionboardsController < ApplicationController
 
     def team_stylist_count
       fashion_team.count = stylist_count
-      # binding.pry
       fashion_team.save
       @team_count = current_member.team.count
     end
