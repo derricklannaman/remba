@@ -4,6 +4,7 @@ class FashionboardsController < ApplicationController
   def show
     @stylists = teams_stylists
     team_stylist_count
+    @items = Item.order('created_at DESC')
   end
 
 

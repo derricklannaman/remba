@@ -1,0 +1,16 @@
+%h1.page-header New Item
+
+= form_for @item do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :message
+    = f.text_area :message, class: 'form-control'
+
+    = f.submit 'Add Picture', class: 'btn btn-primary'
+
+
+
+

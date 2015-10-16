@@ -1,0 +1,5 @@
+.well.well-sm
+  %small.text-muted
+    = "#{time_ago_in_words item.created_at} ago"
+  %h3= item.title
+  %p= item.message

@@ -8,7 +8,6 @@ class TeamsController < ApplicationController
     stylist_id = params[:id].to_i
 
     add_to_team_if_team_not_full team_id, stylist_id
-
     redirect_to fashionboard_path
   end
 

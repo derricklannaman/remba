@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:index, :new, :create, :show, :edit]
   resources :stylists, only: [:index]
+  resources :items, only: [:new, :create]
 end
