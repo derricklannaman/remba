@@ -1,15 +1,18 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: pins
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  title      :string
-#  message    :text
+#  item_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Item < ActiveRecord::Base
-  belongs_to :user
+FactoryGirl.define do
+  factory :pin do
+    member nil
+item nil
+  end
+
 end

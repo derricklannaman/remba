@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  count      :integer
-#  member_id  :integer
+#  count      :integer          default(0)
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

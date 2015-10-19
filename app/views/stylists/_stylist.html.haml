@@ -1,6 +1,9 @@
+=# link_to stylist., feed_user_path(user)
 
-.container.stylist-index
-  = stylist.email
-
-  %div
-    = link_to "Add to Team", add_stylist_path(id: stylist.id, ), class: "btn btn-default"
+%h3= stylist.email
+- if stylist.followed_by(current_stylist)
+  = button_to "Remove", follow_path(stylist.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
+- else
+  = form_for :follow, url: follows_path do |f|
+    = f.hidden_field :target_id, value: stylist.id
+    %input.btn.btn-primary.btn-sm.btn-default{:type => "submit", :value => "Add to Team"}/

@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  stylist                :boolean
-#  type                   :string
+#  status                 :string
 #
 
 require 'rails_helper'

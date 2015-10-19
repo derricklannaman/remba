@@ -1,14 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
+    # binding.pry
     @user = User.new
   end
 
   def create
     if a_stylist?
-      @user = Stylist.new(user_params)
+      # @user = Stylist.new(user_params)
+      @user = User.new(user_params)
+      @user.status = "Stylist"
     elsif a_member?
-      @user = Member.new(user_params)
+      # @user = Member.new(user_params)
+      @user = User.new(user_params)
+      @user.status = "Member"
     end
     save_and_redirect_user
   end
@@ -17,6 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def save_and_redirect_user
+    @user.save
     if @user.save
       sign_in_and_redirect @user
     else

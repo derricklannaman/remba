@@ -16,12 +16,15 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  stylist                :boolean
-#  type                   :string
+#  status                 :string
 #
 
 class User < ActiveRecord::Base
   has_one :dashboard, dependent: :destroy
   has_one :fashionboard, dependent: :destroy
+  has_one :team, dependent: :destroy
+  has_many :follows
+  has_many :items
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -41,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def create_team
-    Team.create(member_id: self.id, count: 0) if is_member?
+    Team.create(user_id: self.id, count: 0) if is_member?
   end
 
   def create_dashboard
@@ -55,6 +58,10 @@ class User < ActiveRecord::Base
 
   def is_member?
     self.stylist == false
+  end
+
+  def followed_by(user= nil)
+    user.follows.find_by(target_id: id)
   end
 
 end

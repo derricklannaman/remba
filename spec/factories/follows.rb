@@ -1,15 +1,18 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: follows
 #
 #  id         :integer          not null, primary key
+#  target_id  :integer
 #  user_id    :integer
-#  title      :string
-#  message    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Item < ActiveRecord::Base
-  belongs_to :user
+FactoryGirl.define do
+  factory :follow do
+    target_id 1
+member_id 1
+  end
+
 end

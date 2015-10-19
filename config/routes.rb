@@ -9,7 +9,19 @@ Rails.application.routes.draw do
 
   get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
 
-  resources :profiles, only: [:index, :new, :create, :show, :edit]
-  resources :stylists, only: [:index]
-  resources :items, only: [:new, :create]
+  resources :profiles,  only: [:index, :new, :create, :show, :edit]
+  resources :stylists,  only: [:index]
+  resources :items,     only: [:new, :create]
+  resources :pins,      only: [:create, :destroy]
+  resources :follows,   only: [:create, :destroy]
+  resources :users,     only: [:index]
+
+   scope path: '/feeds', controller: :feeds, as: 'feed' do
+    get 'user/:id', action: :user, as: :user
+    get 'me', action: :user
+    get 'flat', action: :flat
+    get 'aggregated', action: :aggregated
+    get 'notification', action: :notification
+  end
+
 end

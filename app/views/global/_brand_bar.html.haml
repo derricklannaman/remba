@@ -3,13 +3,22 @@
 
   %h3.brand
     = link_to "remba", root_path
-  - if user_signed_in?
-    = link_to "sign out", destroy_user_session_path, method: :delete
-  - else
-    %span= link_to "How it works", "#"
-    |
-    %span= link_to "About", "#"
-    |
-    %span= link_to "sign up", new_user_registration_path
-    |
-    \#{link_to "sign in", new_user_session_path}
+  .container
+    %ul.nav.navbar-nav
+      - if user_signed_in?
+        %li= link_to 'Users', users_path
+        %li= link_to 'Flat feed', feed_flat_path
+        %li= link_to 'Aggregated feed', feed_aggregated_path
+        %li= link_to 'Notification feed', feed_notification_path
+        %li= link_to "stylist", stylists_path
+        %li= link_to 'My feed', fashionboard_path
+        %li= current_user.email
+        %li= link_to "sign out", destroy_user_session_path, method: :delete
+      - else
+        %span= link_to "How it works", "#"
+        |
+        %span= link_to "About", "#"
+        |
+        %span= link_to "sign up", new_user_registration_path
+        |
+        \#{link_to "sign in", new_user_session_path}
