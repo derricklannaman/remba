@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
     @item.save
     flash[:success] = "Item created!"
     redirect_to fashionboard_path
