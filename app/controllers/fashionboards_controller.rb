@@ -5,7 +5,7 @@ class FashionboardsController < ApplicationController
     # binding.pry
     # @stylists = teams_stylists
     team_stylist_count
-    @items = Item.order('created_at DESC')
+    @items = current_user.items.order('created_at DESC')
   end
 
 

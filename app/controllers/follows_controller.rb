@@ -40,12 +40,12 @@ class FollowsController < ApplicationController
 
   def remove_reciprocating_follow
     follow = Follow.find(params[:id])
-    new_target_id = follow.user_id
-    reciprocating_follow = Follow.where(target_id: new_target_id)
+    target_id = follow.user_id
+    reciprocating_follow = Follow.where(target_id: target_id)
     if reciprocating_follow.present?
-      new_user_id = follow.target_id
+      user_id = follow.target_id
       reciprocating_follow.first.destroy
-      StreamRails.feed_manager.unfollow_user(new_user_id, new_target_id)
+      StreamRails.feed_manager.unfollow_user(user_id, target_id)
     end
   end
 
