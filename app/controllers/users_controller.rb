@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.select { |user| user != current_user }
   end
 end
