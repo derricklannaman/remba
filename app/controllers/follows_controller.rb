@@ -26,7 +26,8 @@ class FollowsController < ApplicationController
   private
 
   def create_reciprocating_follow
-    first_follow_instance = Follow.find_by_target_id(params[:follow][:target_id].to_i)
+    # first_follow_instance = Follow.find_by_target_id(params[:follow][:target_id].to_i)
+    first_follow_instance = Follow.where(target_id: params[:follow][:target_id].to_i).last
     new_followed_target_id = first_follow_instance.user_id
     new_user_id = first_follow_instance.target_id
 
@@ -34,6 +35,7 @@ class FollowsController < ApplicationController
     follow.target_id = new_followed_target_id
     follow.user_id = new_user_id
     if follow.save
+      # binding.pry
       StreamRails.feed_manager.follow_user(follow.user_id, follow.target_id)
     end
   end
@@ -41,7 +43,7 @@ class FollowsController < ApplicationController
   def remove_reciprocating_follow
     follow = Follow.find(params[:id])
     target_id = follow.user_id
-    reciprocating_follow = Follow.where(target_id: target_id)
+    reciprocating_follow = Follow.where(target_id: target_id).last
     if reciprocating_follow.present?
       user_id = follow.target_id
       reciprocating_follow.first.destroy
