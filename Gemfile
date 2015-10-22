@@ -1,3 +1,5 @@
+source 'https://rubygems.org'
+
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -27,6 +29,7 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'rails_db'
 end
 
 group :development, :test do
