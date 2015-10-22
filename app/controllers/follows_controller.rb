@@ -10,7 +10,7 @@ class FollowsController < ApplicationController
       StreamRails.feed_manager.follow_user(follow.user_id, follow.target_id)
     end
     flash[:success] = 'Added to Team!'
-    redirect_to fashionboard_path
+    redirect_to users_path
   end
 
   def destroy
@@ -20,13 +20,12 @@ class FollowsController < ApplicationController
       StreamRails.feed_manager.unfollow_user(follow.user_id, follow.target_id)
     end
     flash[:success] = 'Removed from Team!'
-    redirect_to fashionboard_path
+    redirect_to users_path
   end
 
   private
 
   def create_reciprocating_follow
-    # first_follow_instance = Follow.find_by_target_id(params[:follow][:target_id].to_i)
     first_follow_instance = Follow.where(target_id: params[:follow][:target_id].to_i).last
     new_followed_target_id = first_follow_instance.user_id
     new_user_id = first_follow_instance.target_id
@@ -35,7 +34,6 @@ class FollowsController < ApplicationController
     follow.target_id = new_followed_target_id
     follow.user_id = new_user_id
     if follow.save
-      # binding.pry
       StreamRails.feed_manager.follow_user(follow.user_id, follow.target_id)
     end
   end
@@ -46,7 +44,7 @@ class FollowsController < ApplicationController
     reciprocating_follow = Follow.where(target_id: target_id).last
     if reciprocating_follow.present?
       user_id = follow.target_id
-      reciprocating_follow.first.destroy
+      reciprocating_follow.destroy
       StreamRails.feed_manager.unfollow_user(user_id, target_id)
     end
   end
