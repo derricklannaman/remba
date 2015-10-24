@@ -3,6 +3,10 @@ class TeamsController < ApplicationController
   def new
   end
 
+  def show
+    @team = Team.find(params[:id])
+  end
+
   def add_stylist
     team_id = current_member.team.id
     stylist_id = params[:id].to_i

@@ -12,7 +12,7 @@
 
 class Team < ActiveRecord::Base
   has_many :access_codes
-  has_many :stylists, through: :access_codes
-  belongs_to :member
+  has_many :users, through: :access_codes
+  belongs_to :user
 end
 
