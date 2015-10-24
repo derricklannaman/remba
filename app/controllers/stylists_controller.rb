@@ -1,8 +1,9 @@
 class StylistsController < ApplicationController
 
   def index
-    # @stylists = Stylist.all turns to user.all once auto follow is completed
-    @stylists = Stylist.all
+    # @stylists = User.show_only_stylist
+    @stylists = User.stylists
+    @members = User.members
   end
 
 end

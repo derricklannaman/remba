@@ -1,4 +1,4 @@
-%h3= link_to user.name, feed_user_path(user)
+%h3= link_to user.email, feed_user_path(user)
 - if user.followed_by(current_user)
   = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
 - else
