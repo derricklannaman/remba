@@ -68,4 +68,8 @@ class User < ActiveRecord::Base
     user.follows.find_by(target_id: id)
   end
 
+  def current_team
+    self.follows.pluck(:target_id).map { |follower_id| User.find(follower_id)}
+  end
+
 end

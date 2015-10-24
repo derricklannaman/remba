@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @stylist_on_team = current_user.current_team
   end
 
   def add_stylist
