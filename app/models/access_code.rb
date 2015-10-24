@@ -11,7 +11,7 @@
 #
 
 class AccessCode < ActiveRecord::Base
-  belongs_to :stylists
+  belongs_to :user
   belongs_to :teams
 
   before_create :generate_key

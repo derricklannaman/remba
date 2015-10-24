@@ -7,7 +7,7 @@ class FashionboardsController < ApplicationController
 
     team_stylist_count
     @items = current_user.items.order('created_at DESC')
-    locals pass_in: { count: team_stylist_count, team_id: fashion_team.id }
+    locals pass_in: { count: team_stylist_count }
   end
 
 
