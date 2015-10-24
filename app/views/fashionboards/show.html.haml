@@ -1,17 +1,6 @@
 %h1 Your Fashionboard
 = current_user.email
-.container
- .team-panel
-  %h4 Create your fashion team
-  %p= "You have #{@team_count} stylist on your team"
-
-  = disable_add_stylist_if_greater_than_3
-  %div
- / -# @stylists.each do |stylist|
- /  .stylist-fashionboard-panel
- /   .row
- /    %p
- /     =# stylist.email
+= link_to "team", team_path(pass_in[:team_id]), class: 'btn btn-success'
 
 %p You don't have any fashion entries yet
 = link_to "Upload new Fashion Item", new_item_path, class: 'btn btn-warning'

@@ -4,12 +4,18 @@ class FashionboardsController < ApplicationController
   def show
     # binding.pry
     # @stylists = teams_stylists
+
     team_stylist_count
     @items = current_user.items.order('created_at DESC')
+    locals pass_in: { count: team_stylist_count, team_id: fashion_team.id }
   end
 
 
   private
+
+    def locals values
+      render locals: values
+    end
 
     def teams_stylists
       team_access_codes.map(&:stylist_id).map {|id|Stylist.find id }
