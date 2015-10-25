@@ -1,19 +1,12 @@
 module TeamStatus
 
-  # def team_count
-  #   current_user.current_team.count
-  # end
-
   private
 
   def check_team_limit
-    return if current_user.follows.size == 0
-    number_of_follows = current_user.follows.size
-    current_team_count = current_user.team.count
-    current_user.team.count = number_of_follows
-    current_user.team.save
-
-    if current_user.team.count < 3
+    return if number_of_follows == 0
+    current_team_count = number_of_follows
+    style_team.save!
+    if current_team_count < 3
       yield
     else
       flash[:success] = "Maximum number of 3 stylists on a team reached. Please
@@ -22,7 +15,16 @@ module TeamStatus
     end
   end
 
+  def number_of_follows
+    current_user.follows.size
+  end
 
+  def current_team_count
+    current_user.team.count
+  end
 
+  def style_team
+    current_user.team
+  end
 
 end
