@@ -1,10 +1,12 @@
 module FashionboardsHelper
 
-  def disable_add_stylist_if_greater_than_3
+  def team_capacity_check
     if @team_count < 3
-      link_to "Add Stylist", stylists_path, class: "btn btn-warning"
+      content_tag(:div) do
+        link_to "add a stylist", stylists_path, class: "btn btn-default"
+      end
     else
-      link_to "Add Stylist", stylists_path, class: "btn btn-default disabled"
+      content_tag(:h4, 'Current Style Team', class: 'text-muted')
     end
   end
 
