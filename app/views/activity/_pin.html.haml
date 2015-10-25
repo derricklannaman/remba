@@ -1,9 +1,9 @@
-.well.well-sm
-  %p
-    %small.text-muted
-
-      = when_pinned(activity)
-  %p
-    %strong= activity['actor'].email
-    pinned
-    %strong= activity['object'].title
+= link_to '' do
+  .img-thumbnail.well-sm
+    %p
+      %small.text-muted
+        = when_pinned(activity)
+    %p
+      %strong= activity['actor'].email
+      pinned
+      %strong= activity['object'].title

@@ -3,7 +3,6 @@ module TeamStatus
   private
 
   def check_team_limit
-    return if number_of_follows == 0
     current_team_count = number_of_follows
     style_team.save!
     if current_team_count < 3
