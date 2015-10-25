@@ -1,9 +1,13 @@
 class FollowsController < ApplicationController
+  include TeamStatus
+
   before_action :authenticate_user!
-  after_action :create_reciprocating_follow, only: [:create]
+  around_action :check_team_limit, only: [:create]
   before_action :remove_reciprocating_follow, only: [:destroy]
+  after_action :create_reciprocating_follow, only: [:create]
 
   def create
+    # check_team_limit
     follow = Follow.new(follow_params)
     follow.user = current_user
     if follow.save
@@ -52,4 +56,5 @@ class FollowsController < ApplicationController
   def follow_params
     params.require(:follow).permit(:target_id)
   end
+
 end
