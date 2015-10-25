@@ -2,7 +2,7 @@
 %div
   = link_to "add a stylist", stylists_path, class: "btn btn-default"
 
-- @stylist_on_team.each do |user|
+- @style_team.each do |user|
 
   - if user.followed_by(current_user)
     .stylist-fashionboard-panel

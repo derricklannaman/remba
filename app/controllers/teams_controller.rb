@@ -1,11 +1,13 @@
 class TeamsController < ApplicationController
+  include TeamStatus
 
   def new
   end
 
   def show
     @team = Team.find(params[:id])
-    @stylist_on_team = current_user.current_team
+    @style_team = current_user.current_team
+    add_to_team_if_team_not_full
   end
 
   def add_stylist
@@ -18,9 +20,9 @@ class TeamsController < ApplicationController
 
   private
 
-    def add_to_team_if_team_not_full team_id, stylist_id
-      if current_member.team.count < 3
-        AccessCode.create(team_id: team_id, stylist_id: stylist_id)
+    def add_to_team_if_team_not_full
+      if current_user.follows.count < 3
+
       end
     end
 
