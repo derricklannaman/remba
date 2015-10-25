@@ -16,6 +16,8 @@ module TeamStatus
     if current_user.team.count < 3
       yield
     else
+      flash[:success] = "Maximum number of 3 stylists on a team reached. Please
+                        remove a team member."
       redirect_to team_path(fashion_team.id)
     end
   end

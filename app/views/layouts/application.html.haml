@@ -9,4 +9,8 @@
   %body
     = render  'global/brand_bar'
 
+    - flash.each do |key, value|
+      %div{:class => "alert alert-#{key}"}
+        = value
+
     = yield
