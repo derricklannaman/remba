@@ -35,9 +35,10 @@ class User < ActiveRecord::Base
   scope :stylists, -> { where(stylist: true) }
   scope :members, -> { where(stylist: false) }
 
-  after_create :create_user_boards
+  after_create :auto_create_boards
 
-  def create_user_boards
+
+  def auto_create_boards
     create_fashionboard
     create_team
     create_dashboard
