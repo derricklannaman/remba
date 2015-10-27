@@ -3,6 +3,8 @@
     %p
       %small.text-muted
         = when_pinned(activity)
+    - binding.pry
+    = image_tag attachment_url(activity['object'], :fill, 300, 300)
     %p
       %strong= activity['actor'].email
       pinned

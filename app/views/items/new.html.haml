@@ -1,6 +1,10 @@
 %h1.page-header New Item
 
 = form_for @item do |f|
+
+  .form-group
+    = f.attachment_field :item_image
+
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'

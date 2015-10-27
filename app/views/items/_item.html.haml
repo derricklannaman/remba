@@ -1,4 +1,6 @@
 .well.well-sm
+  - binding.pry
+  = image_tag attachment_url(item, :item_image, :fill, 300, 300)
   %small.text-muted
     = "#{time_ago_in_words item.created_at} ago"
   %h3= item.title

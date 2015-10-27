@@ -14,6 +14,10 @@ gem 'stream_rails'
 
 gem 'devise'
 
+# For image uploading => https://github.com/refile/refile
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

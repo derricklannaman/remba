@@ -12,4 +12,5 @@
 
 class Item < ActiveRecord::Base
   belongs_to :user
+  attachment :item_image
 end

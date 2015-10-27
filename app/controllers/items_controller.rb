@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :authenticate_user!
 
   def new
@@ -15,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:message, :title)
+    params.require(:item).permit(:item_image, :message, :title)
   end
 
 end
