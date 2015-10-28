@@ -10,8 +10,11 @@
 #
 
 class Pin < ActiveRecord::Base
+  has_many :item_images
   belongs_to :user
   belongs_to :item
+
+  attachment :item_image
 
   validates :item, presence: true, uniqueness: {scope: :user}
   validates :user, presence: true, uniqueness: {scope: :item}

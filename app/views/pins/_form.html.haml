@@ -4,3 +4,4 @@
 = form_for :pin, url: pins_path do |f|
   %input.btn.btn-primary.btn-sm{:type => "submit", :value => "Get Advice"}/
   = f.hidden_field :item_id, value: item.id
+  = f.hidden_field :image, value: image
