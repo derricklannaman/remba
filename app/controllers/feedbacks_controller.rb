@@ -5,9 +5,20 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    binding.pry
     @feedback = Feedback.new(feedback_params)
-    render @feedback
+    @feedback.name = params[:feedback][:name]
+    @feedback.item_id = params[:item_id]
+    @feedback.user_id = current_user.id
+    if @feedback.save
+      flash[:alert] = "feedback sent!"
+      redirect_to :back
+    end
+  end
+
+  private
+
+  def feedback_params
+    params.require(:feedback).permit(:item_id, :feedback)
   end
 
 

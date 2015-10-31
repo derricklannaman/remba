@@ -12,5 +12,6 @@
 
 class Item < ActiveRecord::Base
   belongs_to :user
+  has_many :feedbacks
   attachment :item_image
 end

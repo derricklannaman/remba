@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_one :team, dependent: :destroy
   has_many :follows
   has_many :items
+  has_many :feedbacks
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
