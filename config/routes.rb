@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :follows,   only: [:create, :destroy]
   resources :users,     only: [:index]
   resources :teams,     only: [:show]
+  resources :feedbacks, only: [:new, :create]
 
    scope path: '/feeds', controller: :feeds, as: 'feed' do
     get 'user/:id', action: :user, as: :user

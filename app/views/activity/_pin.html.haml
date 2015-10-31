@@ -8,10 +8,14 @@
       %strong= activity['actor'].email
       pinned
       %strong= activity['object'].title
-    .evaluate-container
-      .btn.btn-default  Like It
-      .btn.btn-default  Love It
-      .btn.btn-default  Leave It
-      .btn.btn-default  Comment
+.evaluate-container
+  = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
+    = hidden_field_tag(:item_id, activity['object'].id)
+    = f.label "Like it"
+    = f.radio_button :name, 'Like'
+    = f.label "Love it"
+    = f.radio_button :name, 'Love'
+    = f.label "Leave it"
+    = f.radio_button :name, 'Leave'
 
-
+    = f.submit "send feedback"
