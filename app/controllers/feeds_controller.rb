@@ -10,7 +10,6 @@ class FeedsController < ApplicationController
   end
 
   def flat
-    @feedbacks = Feedback.all
     feed = StreamRails.feed_manager.get_news_feeds(current_user.id)[:flat]
     results = feed.get['results']
     @activities = @enricher.enrich_activities(results)
