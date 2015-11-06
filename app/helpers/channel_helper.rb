@@ -10,11 +10,11 @@ module ChannelHelper
 
   def display_feedback_counter_icon feedback_type
     if feedback_type.first == "Like it"
-      content_tag(:i, feedback_type.last, class: ['fa', 'fa-check', 'margin-spacer'])
+      "<i class='fa fa-check margin-spacer'>#{feedback_type.last}</i>".html_safe
     elsif feedback_type.first == "Love it"
-      content_tag(:i, feedback_type.last, class: ['fa', 'fa-heart', 'margin-spacer'])
+      "<i class='fa fa-heart margin-spacer'>#{feedback_type.last}</i>".html_safe
     elsif feedback_type.first == "Leave it"
-      content_tag(:i, feedback_type.last, class: ['fa', 'fa-thumbs-down', 'margin-spacer'])
+      "<i class='fa fa-thumbs-down margin-spacer'>#{feedback_type.last}</i>".html_safe
     end
   end
 
