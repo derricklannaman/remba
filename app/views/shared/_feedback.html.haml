@@ -1,4 +1,5 @@
-- feedback_counter(activity).each do |feedback_item|
-  .text-muted
-    %span="#{feedback_item.first}"
-    %span.badge="#{feedback_item.last}"
+.feedback-counter
+  - feedback_counter(activity).each do |feedback_item|
+    = display_feedback_counter_icon feedback_item
+
+

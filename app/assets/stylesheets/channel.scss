@@ -1,0 +1,27 @@
+@import "color_palette";
+
+.feedback-wrapper {
+  background-color: #000;
+  opacity: .3;
+  width: 300px;
+  margin-top: -40px;
+  height: 40px;
+}
+
+.feedback-counter {
+  color: $text-white;
+  margin-top: -50px;
+  padding: 6px 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.margin-spacer {
+  margin: 10px;
+}
+
+/* Override font-awesome icons */
+.fa {
+  font-size: x-large !important;
+}
