@@ -13,9 +13,9 @@ module ChannelHelper
     when "Like it"
       content_tag(:i, feedback_type.last, class: "fa fa-check margin-spacer")
     when "Love it"
-      content_tag(:i, feedback_type.last, class: "fa fa-check margin-spacer")
+      content_tag(:i, feedback_type.last, class: "fa fa-heart margin-spacer")
     when "Leave it"
-      content_tag(:i, feedback_type.last, class: "fa fa-check margin-spacer")
+      content_tag(:i, feedback_type.last, class: "fa fa-thumbs-down margin-spacer")
     end
   end
 
