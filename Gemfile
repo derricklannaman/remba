@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'haml'
 gem 'html2haml'
 gem 'stream_rails'
+gem 'font-awesome-sass'
 
 gem 'devise'
 
