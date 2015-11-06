@@ -1,0 +1,14 @@
+@import "color_palette";
+
+%body {
+  color: $text-gray;
+}
+
+.navbar-inverse {
+  background: url('binding_dark.png');
+  border-top: 5px solid $light-gray;
+  .navbar-brand {
+    color: $text-gray;
+  }
+}
+
