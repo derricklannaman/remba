@@ -1,25 +1,26 @@
-%nav.navbar.navbar-default.navbar-static-top
+%nav.navbar.navbar-inverse.navbar-fixed-top
   .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#collapsemenu", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
 
-  %h3.brand
-    = link_to "remba", root_path
-  .container
-    %ul.nav.navbar-nav
-      - if user_signed_in?
-        %li= link_to 'Users', users_path
-        %li= link_to 'My Channel', feed_flat_path if current_user.is_stylist?
-        %li=# link_to 'Aggregated feed', feed_aggregated_path
-        %li=# link_to 'Notification feed', feed_notification_path
-        %li= link_to "stylist", stylists_path
-        %li= link_to "team", team_path(fashion_team.id) unless fashion_team.blank?
-        %li= link_to 'Fashion board', fashionboard_path if current_user.is_member?
-        %li= current_user.email
-        %li= link_to "sign out", destroy_user_session_path, method: :delete
-      - else
-        %span= link_to "How it works", "#"
-        |
-        %span= link_to "About", "#"
-        |
-        %span= link_to "sign up", new_user_registration_path
-        |
-        \#{link_to "sign in", new_user_session_path}
+      = link_to "REMBA", root_path, class: 'navbar-brand'
+    #collapsemenu.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        - if user_signed_in?
+          %li= link_to 'Users', users_path
+          %li= link_to 'My Channel', feed_flat_path if current_user.is_stylist?
+          %li= link_to "stylist", stylists_path
+          %li= link_to "team", team_path(fashion_team.id) unless fashion_team.blank?
+          %li= link_to 'Fashion board', fashionboard_path if current_user.is_member?
+          %li= link_to "sign out", destroy_user_session_path, method: :delete
+        - else
+          %span= link_to "How it works", "#"
+          |
+          %span= link_to "About", "#"
+          |
+          %span= link_to "sign up", new_user_registration_path
+          |
+          \#{link_to "sign in", new_user_session_path}

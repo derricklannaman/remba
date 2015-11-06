@@ -1,23 +1,23 @@
-= link_to '' do
-  .img-thumbnail.well-sm
-    %p
-      %small.text-muted
-        = when_pinned(activity)
-    = image_tag diplay_pinned_image activity
+.img-thumbnail.well-sm
+  %p
+    %small.text-muted
+      = when_pinned(activity)
+  = image_tag diplay_pinned_image activity
+  .feedback-group
     = render partial: 'shared/feedback', locals: {activity: activity}
 
-    %p
-      %strong= activity['actor'].email
-      pinned
-      %strong= activity['object'].title
-.evaluate-container
-  = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
-    = hidden_field_tag(:item_id, activity['object'].id)
-    = f.label "Like it"
-    = f.radio_button :name, 'Like it'
-    = f.label "Love it"
-    = f.radio_button :name, 'Love it'
-    = f.label "Leave it"
-    = f.radio_button :name, 'Leave it'
+  %p
+    %strong= activity['actor'].email
+    pinned
+    %strong= activity['object'].title
+  .evaluate-container
+    = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
+      = hidden_field_tag(:item_id, activity['object'].id)
+      = f.label "Like it"
+      = f.radio_button :name, 'Like it'
+      = f.label "Love it"
+      = f.radio_button :name, 'Love it'
+      = f.label "Leave it"
+      = f.radio_button :name, 'Leave it'
 
-    = f.submit "send feedback"
+      = f.submit "send feedback"
