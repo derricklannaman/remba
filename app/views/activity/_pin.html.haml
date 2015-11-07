@@ -1,23 +1,25 @@
-.img-thumbnail.well-sm
+.item-thumbnail
   %p
     %small.text-muted
+    %p
+      %strong= activity['actor'].email
+      posted
+      %strong= activity['object'].title
       = when_pinned(activity)
   = image_tag display_pinned_image activity
-  .feedback-wrapper
+  .feedback-results
   = render partial: 'shared/feedback', locals: {activity: activity}
 
-  %p
-    %strong= activity['actor'].email
-    pinned
-    %strong= activity['object'].title
-  .evaluate-container
+  .feedback-form-container
     = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
       = hidden_field_tag(:item_id, activity['object'].id)
-      = f.label "Like it"
-      = f.radio_button :name, 'Like it'
-      = f.label "Love it"
-      = f.radio_button :name, 'Love it'
-      = f.label "Leave it"
-      = f.radio_button :name, 'Leave it'
+      .form-group.feedback-button-group
+        = f.radio_button :name, 'Like it'
+        = f.label :name, "Like it", value: "Like it"
+        = f.radio_button :name, 'Love it'
+        = f.label :name, "Love it", value: "Love it"
+        = f.radio_button :name, 'Leave it'
+        = f.label :name, "Leave it", value: "Leave it"
+      .form-group
+        = f.submit "send feedback"
 
-      = f.submit "send feedback"

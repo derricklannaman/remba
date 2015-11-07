@@ -1,0 +1,5 @@
+@import 'color_palette';
+
+@mixin diffused_shadow {
+  box-shadow: 1px 1px 50px 10px $shadow;
+}
