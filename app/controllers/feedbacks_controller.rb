@@ -5,13 +5,17 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = Feedback.new(feedback_params)
-    @feedback.name = params[:feedback][:name]
-    @feedback.item_id = params[:item_id]
-    @feedback.user_id = current_user.id
-    if @feedback.save
-      flash[:alert] = "feedback sent!"
-      redirect_to :back
+    if params.has_key? :feedback
+      feedback = Feedback.new feedback_params
+      feedback.name = params[:feedback][:name]
+      feedback.item_id = params[:item_id]
+      feedback.user_id = current_user.id
+      if feedback.save
+        redirect_to :back, alert: "feedback sent!"
+      end
+    else
+      redirect_to :back, alert: "Oops! You submitted without giving feedback.
+                                 Please provide feedback first."
     end
   end
 

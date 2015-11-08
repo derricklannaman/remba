@@ -1,4 +1,6 @@
-/* COLOR PALETTE */
+/*//////////////////////////////
+/       COLOR PALETTE         /
+////////////////////////////*/
 
 /* Base Site Colors */
 $base-gray:   #3F5063;
@@ -6,9 +8,23 @@ $light-gray:  #6A7C91;
 $dark-gray:   #242E39;
 $darkest-gray: #192129;
 
+/* Greens */
+$go-green:           #76cc66;
+$go-green-minus10:   lighten($go-green, 10%);
+$go-green-15:        lighten($go-green, 15%);
+$go-green-20:        lighten($go-green, 20%);
+$go-green-25:        lighten($go-green, 25%);
+$go-green-30:        lighten($go-green, 30%);
+
+$go-green-plus5:     darken($go-green, 5%);
+$go-green-plus20:    darken($go-green, 10%);
+$go-green-plus30:    darken($go-green, 30%);
+$go-green-plus40:    darken($go-green, 40%);
+
 
 /* Text Colors */
 $text-gray:   #505A66;
 $text-white:  #F1F1F1;
 
 $shadow:      #0F1519;
+

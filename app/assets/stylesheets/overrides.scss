@@ -1,0 +1,19 @@
+@import 'color_palette';
+
+/* BOOTSTRAP OVERRIDES */
+
+/* Navigation */
+.navbar-inverse {
+  background: url('binding_dark.png');
+  border-top: 5px solid $go-green-plus20;
+  .navbar-brand {
+    color: $text-gray;
+  }
+}
+
+/* FONT-AWESOME OVERRIDES */
+
+/* Icons */
+.fa {
+  font-size: x-large !important;
+}

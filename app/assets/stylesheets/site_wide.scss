@@ -1,3 +1,25 @@
+/* SITE-WIDE STYLES */
+@import 'color_palette';
+
+#body-base {
+ background-color: $darkest-gray !important;
+ color: $text-gray;
+}
+
+#app-content {
+  margin-top: 70px;
+}
+
 .alert.alert-alert {
   margin-top: 45px;
+  font-size: 25px;
+  text-align: center;
+  color: $light-gray;
+}
+
+h1.page-header {
+  padding-top: 3px;
+  padding-top: 5px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid $light-gray;
 }

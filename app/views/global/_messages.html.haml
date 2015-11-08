@@ -1,0 +1,5 @@
+.container
+  - flash.each do |key, value|
+    / Turn div into span to have animation
+    %div{:class => "alert alert-#{key}"}
+      = value
