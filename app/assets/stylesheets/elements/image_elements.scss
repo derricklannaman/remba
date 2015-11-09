@@ -2,9 +2,12 @@
 @import "mixins";
 
 .item-thumbnail {
+  margin: 10px 25px;
+  color:  $light-gray;
   display: inline-block;
   max-width: 100%;
   height: auto;
+  min-height: 450px;
   padding: 10px;
   line-height: 1.42857143;
   background-color: $dark-gray;

@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
   has_one :fashionboard, dependent: :destroy
   has_one :team, dependent: :destroy
   has_many :follows
-  has_many :items
-  has_many :feedbacks
+  has_many :items, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
