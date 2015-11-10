@@ -1,10 +1,9 @@
 class FashionboardsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
-  def show
-    # binding.pry
-    # @stylists = teams_stylists
+  layout "fashion_board"
 
+  def show
     team_stylist_count
     @items = current_user.items.order('created_at DESC')
     locals pass_in: { count: team_stylist_count }
@@ -12,10 +11,6 @@ class FashionboardsController < ApplicationController
 
 
   private
-
-    def locals values
-      render locals: values
-    end
 
     def teams_stylists
       team_access_codes.map(&:stylist_id).map {|id|Stylist.find id }
