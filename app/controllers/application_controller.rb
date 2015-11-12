@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def locals values
+    render locals: values
+  end
+
   def fashion_team
     current_user.team
   end

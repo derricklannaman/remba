@@ -2,7 +2,8 @@
 @import 'color_palette';
 
 input[type=radio] {
-  /*display:none;*/
+  display:none;
+  /*opacity: 0;*/
 }
 
 input[type=radio]:checked + label,

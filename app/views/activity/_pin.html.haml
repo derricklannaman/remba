@@ -13,13 +13,16 @@
     = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
       = hidden_field_tag(:item_id, activity['object'].id)
       .form-group.feedback-button-group
-        - like_count, love_count, leave_count = feedback_counter activity
-        = f.radio_button :name, 'Like it'
-        = f.label :name, display_feedback_counter_icon(like_count), value: "Like it"
-        = f.radio_button :name, 'Love it'
-        = f.label :name, display_feedback_counter_icon(love_count), value: "Love it"
-        = f.radio_button :name, 'Leave it'
-        = f.label :name, display_feedback_counter_icon(leave_count), value: "Leave it"
+        - feedback_counter activity
+        = f.radio_button "name_#{activity['object'].id}" , 'Like it'
+        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@like_count), value: "Like it"
+
+
+        = f.radio_button "name_#{activity['object'].id}" , 'Love it'
+        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@love_count), value: "Love it"
+
+        = f.radio_button "name_#{activity['object'].id}", 'Leave it'
+        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@leave_count), value: "Leave it"
       .form-group
         = f.submit "send feedback"
 
