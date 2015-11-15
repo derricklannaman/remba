@@ -1,11 +1,5 @@
 .item-thumbnail
-  %p
-    %small.text-muted
-    %p
-      %strong= activity['actor'].email
-      posted
-      %strong= activity['object'].title
-      = when_pinned(activity)
+
   = image_tag display_pinned_image activity
   .feedback-results
 
