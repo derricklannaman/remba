@@ -11,18 +11,19 @@
 
   .feedback-form-container
     = form_for(:feedback, url: { controller: "feedbacks", action: "create", method: "post"}) do |f|
-      = hidden_field_tag(:item_id, activity['object'].id)
+      - activity_id = activity['object'].id
+      = hidden_field_tag(:item_id, activity_id)
       .form-group.feedback-button-group
         - feedback_counter activity
-        = f.radio_button "name_#{activity['object'].id}" , 'Like it'
-        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@like_count), value: "Like it"
 
+        = f.radio_button "name", 'Like it'
+        = f.label "name", display_feedback_counter_icon(like_it_count), value: "Like it"
 
-        = f.radio_button "name_#{activity['object'].id}" , 'Love it'
-        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@love_count), value: "Love it"
+        = f.radio_button "name", 'Love it'
+        = f.label "name", display_feedback_counter_icon(love_it_count), value: "Love it"
 
-        = f.radio_button "name_#{activity['object'].id}", 'Leave it'
-        = f.label "name_#{activity['object'].id}", display_feedback_counter_icon(@leave_count), value: "Leave it"
+        = f.radio_button "name", 'Leave it'
+        = f.label "name", display_feedback_counter_icon(leave_it_count), value: "Leave it"
       .form-group
-        = f.submit "send feedback"
+        = f.submit "send feedback", class: 'btn btn-warning'
 

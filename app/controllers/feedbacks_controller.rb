@@ -22,7 +22,7 @@ class FeedbacksController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:item_id, :feedback)
+    params.require(:feedback).permit(:item_id, :feedback, :name)
   end
 
 

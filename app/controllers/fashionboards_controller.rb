@@ -1,8 +1,6 @@
 class FashionboardsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
-  layout "fashion_board"
-
   def show
     team_stylist_count
     @items = current_user.items.order('created_at DESC')
