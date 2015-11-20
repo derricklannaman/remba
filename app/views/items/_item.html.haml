@@ -1,8 +1,8 @@
-.img-thumbnail.well-sm
-  = image_tag attachment_url(item, :item_image, :fill, 300, 300)
-  %small.text-muted
-    = "#{time_ago_in_words item.created_at} ago"
-  %h3= item.title
-  %p= item.message
+.item-thumbnail
+  -# binding.pry
+  = image_tag display_pinned_image item
+
+  =# image_tag attachment_url(item, :item_image, :fill, 300, 300)
+  =# "#{time_ago_in_words item.created_at} ago"
 
   = render "pins/form", item: item, image: :item_image

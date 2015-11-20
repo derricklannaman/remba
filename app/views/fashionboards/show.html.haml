@@ -1,13 +1,14 @@
 %h1 Your Fashionboard
 = current_user.email
+
 = link_to "team", team_path(fashion_team.id), class: 'btn btn-default'
 
 %p You don't have any fashion entries yet
 
 .new-fashion-item
   = link_to "Upload new Fashion Item", new_item_path, class: 'btn btn-warning'
-
-= render @items
+%div
+  = render @items
 
 
 
