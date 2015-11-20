@@ -18,6 +18,7 @@ gem 'devise'
 # For image uploading => https://github.com/refile/refile
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
+gem "refile-s3"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
