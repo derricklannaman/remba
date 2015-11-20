@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
 
-  resources :profiles,  only: [:index, :new, :create, :show, :edit]
+  resources :profiles
   resources :stylists,  only: [:index]
   resources :items,     only: [:new, :create]
   resources :pins,      only: [:create, :destroy]

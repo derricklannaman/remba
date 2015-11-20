@@ -54,6 +54,7 @@ group :test do
  gem "database_cleaner"
  gem "launchy"
  gem "selenium-webdriver"
+ gem 'simplecov', :require => false
 end
 
 gem 'rails_12factor', group: :production
