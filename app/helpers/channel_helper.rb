@@ -22,6 +22,7 @@ module ChannelHelper
   end
 
   def display_feedback_counter_icon feedback_type
+    # TODO: refactor this shit
     case feedback_type.first
       when "Like it"
         content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-thumbs-up margin-spacer")

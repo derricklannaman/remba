@@ -8,6 +8,7 @@
       - activity_id = activity['object'].id
       = hidden_field_tag(:item_id, activity_id)
       .form-group.feedback-button-group
+
         - feedback_counter activity
 
         = radio_button_tag "name_#{activity_id}", 'Like it'
@@ -18,6 +19,12 @@
 
         = radio_button_tag "name_#{activity_id}", 'Leave it'
         = label_tag "name_#{activity_id}_Leave_it", display_feedback_counter_icon(leave_it_count), value: "Leave it"
+      .time-of-post
+        Posted
+        = time_of_posting activity
+      .posting-info
+        by
+        = activity['actor'].email
       .form-group
-        = submit_tag "send feedback", class: 'btn btn-warning'
+        = submit_tag "send feedback", class: 'btn btn-warning feedback-btn'
 

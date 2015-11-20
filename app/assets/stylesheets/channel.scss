@@ -4,8 +4,8 @@
   background-color: #000;
   opacity: .3;
   width: 300px;
-  margin-top: -40px;
-  height: 40px;
+  margin-top: -51px;
+  height: 51px;
 }
 
 .feedback-counter {
@@ -19,6 +19,13 @@
 
 .margin-spacer {
   margin: 10px;
+}
+
+.posting-info,
+.time-of-post {
+  text-align: center;
+  font-size: 18px;
+  width: 280px;
 }
 
 /* Override font-awesome icons */

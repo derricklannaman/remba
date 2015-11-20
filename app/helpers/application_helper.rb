@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def when_pinned activity
+  def time_of_posting activity
     pin_id = activity['foreign_id'].split(':').last
     pin = Pin.find(pin_id)
     "#{time_ago_in_words pin.created_at} ago"
