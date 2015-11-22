@@ -7,29 +7,9 @@ input[type=radio] {
 
 input[type=radio] + label {
   cursor: pointer;
-  .fa-heart-o {
-
-/*    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: red;*/
-  }
-  .fa-thumbs-o-up {
-
-/*    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: green;*/
-  }
-  .fa-thumbs-o-down {
-/*    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: yellow;*/
-  }
-
   span {
     color: #FFF;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 0;
-    -webkit-text-stroke-color: none;
   }
 }
 
