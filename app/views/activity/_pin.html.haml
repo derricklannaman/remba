@@ -8,7 +8,6 @@
       - activity_id = activity['object'].id
       = hidden_field_tag(:item_id, activity_id)
       .form-group.feedback-button-group
-
         - feedback_counter activity
 
         = radio_button_tag "name_#{activity_id}", 'Like it'
@@ -26,5 +25,8 @@
         by
         = activity['actor'].email
       .form-group
-        = submit_tag "send feedback", class: 'btn btn-warning feedback-btn'
+        - if @feedback.present?
+          = link_to "remove feedback", feedback_path(@feedback.first.id), class: "btn btn-primary btn-sm btn-danger", method: :delete
+        -else
+          = submit_tag "send feedback", class: 'btn btn-warning feedback-btn'
 
