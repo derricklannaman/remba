@@ -1,8 +1,9 @@
 .item-thumbnail
-  -# binding.pry
+  - feedback_counter item
   = image_tag display_pinned_image item
 
-  =# image_tag attachment_url(item, :item_image, :fill, 300, 300)
-  =# "#{time_ago_in_words item.created_at} ago"
-
+  .feedback-response
+    = display_feedback_counter_icon(like_it_count)
+    = display_feedback_counter_icon(love_it_count)
+    = display_feedback_counter_icon(leave_it_count)
   = render "pins/form", item: item, image: :item_image

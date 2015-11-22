@@ -8,7 +8,7 @@ module ChannelHelper
   end
 
   def feedback_counter activity
-    @feedback = activity['object'].feedbacks
+    @feedback = image_type(activity).feedbacks
     @like_count, @love_count, @leave_count = @feedback.group_by(&:name)
                                 .map {|name, feedback| [name, feedback.size]}
   end
@@ -29,11 +29,11 @@ module ChannelHelper
     # TODO: refactor this shit
     case feedback_type.first
       when "Like it"
-        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-thumbs-up margin-spacer")
+        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-thumbs-o-up margin-spacer")
       when "Love it"
-        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-heart margin-spacer")
+        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-heart-o margin-spacer")
       when "Leave it"
-        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-thumbs-down margin-spacer")
+        content_tag(:i, content_tag(:span, feedback_type.last), class: "fa fa-thumbs-o-down margin-spacer")
     end
   end
 
