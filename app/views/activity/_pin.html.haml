@@ -10,36 +10,21 @@
       .form-group.feedback-button-group
         - feedback_counter activity
 
-        - if @feedback.present?
-          = radio_button_tag "name_#{activity_id}", 'Like it'
-          = label_tag "name_#{activity_id}_Like_it", display_feedback_counter_icon(like_it_count), value: "Like it"
-        - else
-          = radio_button_tag "name_#{activity_id}", 'Like it'
-          = label_tag "name_#{activity_id}_Like_it", "<i class='fa fa-thumbs-o-up margin-spacer'><span>0</span></i>".html_safe, value: "Like it"
+        = radio_button_tag "name_#{activity_id}", 'Like it'
+        = label_tag "name_#{activity_id}_Like_it", display_feedback_counter_icon(like_it_count), value: "Like it"
 
-        - if @feedback.present?
-          = radio_button_tag "name_#{activity_id}", 'Love it'
-          = label_tag "name_#{activity_id}_Love_it", display_feedback_counter_icon(love_it_count), value: "Love it"
-        - else
-          = radio_button_tag "name_#{activity_id}", 'Love it'
-          = label_tag "name_#{activity_id}_Love_it", "<i class='fa fa-heart-o margin-spacer'><span>0</span></i>".html_safe, value: "Love it"
+        = radio_button_tag "name_#{activity_id}", 'Love it'
+        = label_tag "name_#{activity_id}_Love_it", display_feedback_counter_icon(love_it_count), value: "Love it"
 
-        - if @feedback.present?
-          = radio_button_tag "name_#{activity_id}", 'Leave it'
-          = label_tag "name_#{activity_id}_Leave_it", display_feedback_counter_icon(leave_it_count), value: "Leave it"
-        - else
-          = radio_button_tag "name_#{activity_id}", 'Leave it'
-          = label_tag "name_#{activity_id}_Leave_it", "<i class='fa fa-thumbs-o-down margin-spacer'><span>0</span></i>".html_safe, value: "Leave it"
-
-
-
+        = radio_button_tag "name_#{activity_id}", 'Leave it'
+        = label_tag "name_#{activity_id}_Leave_it", display_feedback_counter_icon(leave_it_count), value: "Leave it"
       .time-of-post
         Posted
         = time_of_posting activity
       .posting-info
         by
         = activity['actor'].email
-      .form-group.feedback-submit-btn-group
+      .form-group
         - if @feedback.present?
           = link_to "remove feedback", feedback_path(@feedback.first.id), class: "btn btn-primary btn-sm btn-danger", method: :delete
         -else

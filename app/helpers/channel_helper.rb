@@ -11,40 +11,24 @@ module ChannelHelper
   end
 
   def feedback_counter activity
-    @feedback = image_type(activity).feedbacks
-    @like_count, @love_count, @leave_count = @feedback.group_by(&:name)
-                                .map {|name, feedback| [name, feedback.size]}
-# binding.pry
-    # @feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}
-    # @feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}.each do |feedback|
-    # #   # @like_count = feedback if feedback.first == "Like it"
-    # #   # @love_count = feedback if feedback.first == "Love it"
-    # #   # @leave_count = feedback if feedback.first == "Leave it"
-    # binding.pry
-    #   if feedback.first == "Like it"
-    #     @like_count = feedback
-    #   elsif feedback.first == "Love it"
-    #     @love_count = feedback
-    #   elsif feedback.first == "Leave it"
-    #     @leave_count = feedback
-    #   end
-    # end
+    binding.pry
+    @feedback = image_type(activity).feedbacks.select { |fb| fb.user_id == current_user.id }
+    @count = @feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
   end
 
   def like_it_count
-    @like_count.present? ? @like_count : ['Like it', '0']
+    @count.present? && @count.first.eql? "Like it" ? @count : ['Like it', '0']
   end
 
   def love_it_count
-    @love_count.present? ? @love_count : ['Love it', '0']
+    @count.present? && @count.first.eql? "Love it" ? @count : ['Love it', '0']
   end
 
   def leave_it_count
-    @leave_count.present? ? @leave_count : ['Leave it', '0']
+    @count.present? && @count.first.eql? "Leave it" ? @count : ['Leave it', '0']
   end
 
   def display_feedback_counter_icon feedback_type
-    # binding.pry
     case feedback_type.first
     when "Like it"
       select_icon "fa-thumbs-o-up", feedback_type
@@ -56,7 +40,6 @@ module ChannelHelper
   end
 
   def select_icon icon, feedback_type
-    # binding.pry
     content_tag(:i, content_tag(:span, feedback_type.last), class: "fa #{icon} margin-spacer") #unless feedback_type.last == 0
   end
 
