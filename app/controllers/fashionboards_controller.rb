@@ -7,7 +7,6 @@ class FashionboardsController < ApplicationController
     locals pass_in: { count: team_stylist_count }
   end
 
-
   private
 
     def teams_stylists
