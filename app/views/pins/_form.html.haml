@@ -1,7 +1,11 @@
 -# if item.member_pin(current_user)
   =# button_to "Unpin", pin_path(item.user_pin(current_user)), method: :delete, class: "btn btn-primary btn-sm btn-danger"
 / - else
-= form_for :pin, url: pins_path do |f|
-  %input.btn.btn-primary.btn-sm{:type => "submit", :value => "Get Advice"}/
-  = f.hidden_field :item_id, value: item.id
-  = f.hidden_field :image, value: image
+
+- if @total_feedback.any?
+  .get-advice-button advice requested
+- else
+  = form_for :pin, url: pins_path do |f|
+    %input.btn.btn-default.get-advice-button{:type => "submit", :value => "Get Advice"}/
+    = f.hidden_field :item_id, value: item.id
+    = f.hidden_field :image, value: image
