@@ -8,7 +8,7 @@ class FeedbacksController < ApplicationController
       feedback.item_id = params[:item_id]
       feedback.user_id = current_user.id
       if feedback.save
-        redirect_to :back, alert: "Your feedback was sent."
+        redirect_to :back#, alert: "Your feedback was sent."
       end
     else
       redirect_to :back, alert: "Oops! You submitted without giving feedback.
@@ -17,16 +17,8 @@ class FeedbacksController < ApplicationController
   end
 
   def destroy
-    selected_feedback = Feedback.find(params[:id])
-    selected_feedback.destroy
-    # feedbacks = Feedback.where(user_id: current_user.id)
-    # binding.pry
-    # target = Feedback.where("id = ? AND user_id = ?", params[:id], current_user.id)
-    # feedbacks.find {|feedback| feedback == selected_feedback }.destroy
-    # binding.pry
-    # feedbacks.each do |feedback|
-    #   feedback.destroy if feedback == selected_feedback
-    # end
+    feedback = Feedback.find(params[:id])
+    feedback.destroy
     redirect_to :back
   end
 
