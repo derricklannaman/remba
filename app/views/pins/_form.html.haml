@@ -9,3 +9,5 @@
     %input.btn.btn-default.get-advice-button{:type => "submit", :value => "Get Advice"}/
     = f.hidden_field :item_id, value: item.id
     = f.hidden_field :image, value: image
+  = link_to "remove fashion item", "#", class: "btn-large btn-danger get-advice-button"
+
