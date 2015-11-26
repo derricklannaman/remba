@@ -15,7 +15,7 @@ module FeedbackHelper
     @count = @feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
   end
 
-  def total_feedback_counter activity
+  def feedback_totals activity
     @total_feedback = image_type(activity).feedbacks
     @count = @total_feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
   end
