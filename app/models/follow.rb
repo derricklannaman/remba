@@ -13,11 +13,15 @@ class Follow < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, class_name: "User"
 
+  include StreamRails::Activity
+  as_activity
+
   validates :target_id, presence: true
   validates :user_id, presence: true
 
-  include StreamRails::Activity
-  as_activity
+  # SCOPES
+  scope :retrieve_initial_follow, -> (params) {
+                      where(target_id: params[:follow][:target_id].to_i).last }
 
   def activity_notify
     [StreamRails.feed_manager.get_notification_feed(self.target_id)]

@@ -4,7 +4,7 @@ class FollowsController < ApplicationController
   before_action :authenticate_user!
   before_action :remove_reciprocating_follow, only: [:destroy]
   around_action :check_team_limit, only: [:create], :unless => :no_follows?
-  after_action :create_reciprocating_follow, only: [:create]
+  after_action  :create_reciprocating_follow, only: [:create]
 
   def create
     follow = Follow.new(follow_params)
@@ -37,7 +37,7 @@ class FollowsController < ApplicationController
   end
 
   def create_reciprocating_follow
-    initial_follow = Follow.where(target_id: params[:follow][:target_id].to_i).last
+    initial_follow = Follow.retrieve_initial_follow(params)
     follow = Follow.new
     follow.target_id  = initial_follow.user_id
     follow.user_id    = initial_follow.target_id
@@ -49,7 +49,7 @@ class FollowsController < ApplicationController
   def remove_reciprocating_follow
     follow = find_follow
     target_id = follow.user_id
-    reciprocating_follow = Follow.where(target_id: target_id).last
+    reciprocating_follow = Follow.reciprocal_follow(params)
     if reciprocating_follow.present?
       user_id = follow.target_id
       reciprocating_follow.destroy
