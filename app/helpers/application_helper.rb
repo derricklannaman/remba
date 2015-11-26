@@ -2,8 +2,12 @@ module ApplicationHelper
 
   def time_of_posting activity
     pin_id = activity['foreign_id'].split(':').last
-    pin = Pin.find(pin_id)
-    "#{time_ago_in_words pin.created_at} ago"
+    begin
+      pin = Pin.find(pin_id)
+      "#{time_ago_in_words pin.created_at} ago"
+    rescue
+      ""
+    end
   end
 
   def display_item_image item
