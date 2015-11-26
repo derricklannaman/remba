@@ -10,4 +10,16 @@ module FashionboardsHelper
     end
   end
 
+  def roster_spot
+    3 - @team_count
+  end
+
+  def team_size_dialog
+    if roster_spot == 0
+      "Your style team has reached maximum capacity."
+    else
+      "You can add #{roster_spot} stylist."
+    end
+  end
+
 end
