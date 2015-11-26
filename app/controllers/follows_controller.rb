@@ -49,7 +49,7 @@ class FollowsController < ApplicationController
   def remove_reciprocating_follow
     follow = find_follow
     target_id = follow.user_id
-    reciprocating_follow = Follow.reciprocal_follow(params)
+    reciprocating_follow = Follow.reciprocal_follow(target_id)
     if reciprocating_follow.present?
       user_id = follow.target_id
       reciprocating_follow.destroy

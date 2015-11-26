@@ -23,6 +23,8 @@ class Follow < ActiveRecord::Base
   scope :retrieve_initial_follow, -> (params) {
                       where(target_id: params[:follow][:target_id].to_i).last }
 
+  scope :reciprocal_follow, -> (target_id){ where(target_id: target_id).last }
+
   def activity_notify
     [StreamRails.feed_manager.get_notification_feed(self.target_id)]
   end
