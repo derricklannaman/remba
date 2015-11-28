@@ -3,7 +3,7 @@
   = image_tag display_pinned_image item
 
   .feedback-response
-    = display_feedback_counter_icon(like_it_count)
-    = display_feedback_counter_icon(love_it_count)
-    = display_feedback_counter_icon(leave_it_count)
+    - show_feedback_totals @count
+    - @display_totals.each do |feedback_response|
+      = feedback_response
   = render "pins/form", item: item, image: :item_image

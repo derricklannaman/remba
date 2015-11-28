@@ -1,9 +1,11 @@
+%h1
+  = "Welcome #{current_user.email}"
+
 %h1 Dashboard
 
 %div
   = "Signed in? #{user_signed_in?}"
-%div
-  = current_user.email
+
 %div
   = link_to "Profile", new_profile_path
 %div

@@ -17,7 +17,11 @@ module FeedbackHelper
 
   def feedback_totals activity
     @total_feedback = image_type(activity).feedbacks
-    @count = @total_feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
+    if @total_feedback.count <= 1
+      @count = @total_feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
+    else
+      @count = @total_feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}.to_h
+    end
   end
 
   def like_it_count
@@ -31,6 +35,43 @@ module FeedbackHelper
   def leave_it_count
     @count.present? && @count.first.eql?("Leave it") ? @count : ['Leave it', '0']
   end
+
+  def show_feedback_totals counts
+    @display_totals = []
+    if counts.empty?
+      counts = {"Like it"=> 0, "Love it"=> 0, "Leave it"=> 0}
+      # counts << ["Like it", 0] << ["Love it", 0] << ["Leave it", 0]
+    else
+      missing_feedback = ['Like it', 'Love it', 'Leave it'] - counts.keys
+    end
+    if missing_feedback.blank?
+      # @display_totals = [["Like it", 0],["Love it", 0],["Leave it", 0]]
+    else missing_feedback.present?
+      missing_feedback.each do |missing|
+        missing_feedback_element = {"#{missing}" => 0}
+        counts.merge! missing_feedback_element
+      end
+    end
+    if counts.any?
+      counts.each do |key, value|
+        if key == "Like it"
+          @display_totals << display_feedback_results("fa-thumbs-o-up", value)
+        end
+        if key == "Love it"
+          @display_totals << display_feedback_results("fa-heart-o", value)
+        end
+        if key == "Leave it"
+          @display_totals << display_feedback_results("fa-thumbs-o-down", value)
+        end
+      end
+    end
+    @display_totals
+  end
+
+  def display_feedback_results icon, value
+    content_tag(:i, content_tag(:span, value), class: "fa #{icon} margin-spacer")
+  end
+
 
   def display_feedback_counter_icon feedback_type
     case feedback_type.first
