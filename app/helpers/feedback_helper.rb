@@ -36,32 +36,28 @@ module FeedbackHelper
     display_totals = []
     if counts.any?
       counts.each do |key, value|
-        display_totals << compose_feedback_results("fa-thumbs-o-up", value) if key == "Like it"
-        display_totals << compose_feedback_results("fa-heart-o", value) if key == "Love it"
-        display_totals << compose_feedback_results("fa-thumbs-o-down", value) if key == "Leave it"
+        display_totals << render_feedback("fa-thumbs-o-up", value) if key == "Like it"
+        display_totals << render_feedback("fa-heart-o", value) if key == "Love it"
+        display_totals << render_feedback("fa-thumbs-o-down", value) if key == "Leave it"
       end
     else
-      display_totals = ["fa-thumbs-o-up","fa-heart-o","fa-thumbs-o-down"].map { |icon| compose_feedback_results(icon, 0) }
+      display_totals = ["fa-thumbs-o-up","fa-heart-o","fa-thumbs-o-down"].map { |icon| render_feedback(icon, 0) }
     end
     @display_totals = display_totals
-  end
-
-  def compose_feedback_results icon, value
-    content_tag(:i, content_tag(:span, value), class: "fa #{icon} margin-spacer")
   end
 
   def display_feedback_counter_icon feedback_type
     case feedback_type.first
     when "Like it"
-      build_feedback_icon "fa-thumbs-o-up", feedback_type
+      render_feedback "fa-thumbs-o-up", feedback_type.last
     when "Love it"
-      build_feedback_icon "fa-heart-o", feedback_type
+      render_feedback "fa-heart-o", feedback_type.last
     when "Leave it"
-      build_feedback_icon "fa-thumbs-o-down", feedback_type
+      render_feedback "fa-thumbs-o-down", feedback_type.last
     end
   end
 
-  def build_feedback_icon icon, feedback_type
-    content_tag(:i, content_tag(:span, feedback_type.last), class: "fa #{icon} margin-spacer")
+  def render_feedback icon, value
+    content_tag(:i, content_tag(:span, value), class: "fa #{icon} margin-spacer")
   end
 end
