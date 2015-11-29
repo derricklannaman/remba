@@ -17,11 +17,7 @@ module FeedbackHelper
 
   def feedback_totals activity
     @total_feedback = image_type(activity).feedbacks
-    if @total_feedback.count <= 1
-      @count = @total_feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
-    else
-      @count = @total_feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}.to_h
-    end
+    @count = @total_feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}.to_h
   end
 
   def like_it_count
@@ -37,41 +33,22 @@ module FeedbackHelper
   end
 
   def show_feedback_totals counts
-    @display_totals = []
-    if counts.empty?
-      counts = {"Like it"=> 0, "Love it"=> 0, "Leave it"=> 0}
-      # counts << ["Like it", 0] << ["Love it", 0] << ["Leave it", 0]
-    else
-      missing_feedback = ['Like it', 'Love it', 'Leave it'] - counts.keys
-    end
-    if missing_feedback.blank?
-      # @display_totals = [["Like it", 0],["Love it", 0],["Leave it", 0]]
-    else missing_feedback.present?
-      missing_feedback.each do |missing|
-        missing_feedback_element = {"#{missing}" => 0}
-        counts.merge! missing_feedback_element
-      end
-    end
+    display_totals = []
     if counts.any?
       counts.each do |key, value|
-        if key == "Like it"
-          @display_totals << display_feedback_results("fa-thumbs-o-up", value)
-        end
-        if key == "Love it"
-          @display_totals << display_feedback_results("fa-heart-o", value)
-        end
-        if key == "Leave it"
-          @display_totals << display_feedback_results("fa-thumbs-o-down", value)
-        end
+        display_totals << compose_feedback_results("fa-thumbs-o-up", value) if key == "Like it"
+        display_totals << compose_feedback_results("fa-heart-o", value) if key == "Love it"
+        display_totals << compose_feedback_results("fa-thumbs-o-down", value) if key == "Leave it"
       end
+    else
+      display_totals = ["fa-thumbs-o-up","fa-heart-o","fa-thumbs-o-down"].map { |icon| compose_feedback_results(icon, 0) }
     end
-    @display_totals
+    @display_totals = display_totals
   end
 
-  def display_feedback_results icon, value
+  def compose_feedback_results icon, value
     content_tag(:i, content_tag(:span, value), class: "fa #{icon} margin-spacer")
   end
-
 
   def display_feedback_counter_icon feedback_type
     case feedback_type.first
