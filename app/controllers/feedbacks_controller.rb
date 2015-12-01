@@ -17,9 +17,15 @@ class FeedbacksController < ApplicationController
   end
 
   def destroy
-    feedback = Feedback.find(params[:id])
+    feedback = find_feedback
     feedback.destroy
     redirect_to :back
+  end
+
+  private
+
+  def find_feedback
+    Feedback.find(params[:id])
   end
 
 end

@@ -10,12 +10,12 @@ module FeedbackHelper
     activity['object'] || activity
   end
 
-  def feedback_counter activity
+  def feedback_count activity
     @feedback = image_type(activity).feedbacks.select { |fb| fb.user_id == current_user.id }
     @count = @feedback.group_by(&:name).flat_map {|name, feedback| [name, feedback.size]}
   end
 
-  def feedback_totals activity
+  def total_feedback_count activity
     @total_feedback = image_type(activity).feedbacks
     @count = @total_feedback.group_by(&:name).map {|name, feedback| [name, feedback.size]}.to_h
   end

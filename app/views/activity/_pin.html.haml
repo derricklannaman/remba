@@ -8,7 +8,7 @@
       - activity_id = activity['object'].id
       = hidden_field_tag(:item_id, activity_id)
       .form-group.feedback-button-group
-        - feedback_counter activity
+        - feedback_count activity
 
         = radio_button_tag "name_#{activity_id}", 'Like it'
         = label_tag "name_#{activity_id}_Like_it", display_feedback_counter_icon(like_it_count), value: "Like it"

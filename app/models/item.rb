@@ -14,5 +14,7 @@
 class Item < ActiveRecord::Base
   belongs_to :user
   has_many :feedbacks, dependent: :destroy
+  has_many :pins, dependent: :destroy
+
   attachment :item_image
 end
