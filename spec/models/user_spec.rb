@@ -22,5 +22,22 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:user) { User.new }
+
+  describe '#is_stylist?' do
+    it 'returns true when a user is a stylist' do
+      user.stylist = true
+      expect(user.is_stylist?).to be true
+    end
+  end
+
+  describe '#is_member?' do
+    it 'returns false when user is a member' do
+      user.stylist = false
+      expect(user.is_member?).to be true
+    end
+  end
+
+
 end
