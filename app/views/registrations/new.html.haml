@@ -7,6 +7,16 @@
     = f.check_box :stylist
 
   .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+
+  .field
     = f.label :email
     %br/
     = f.email_field :email, autofocus: true

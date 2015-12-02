@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+//= require stepsForm.js
+//= require classie.js
+
 //= require bootstrap
 //= require_tree .
