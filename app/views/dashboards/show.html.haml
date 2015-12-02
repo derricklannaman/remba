@@ -1,5 +1,5 @@
 %h1
-  = "Welcome #{current_user.email}"
+  = "Hello #{greetings},"
 
 %h1 Dashboard
 
@@ -10,5 +10,3 @@
   = link_to "Profile", new_profile_path
 %div
   = link_to "Advice Board", adviceboard_path
-%div
-  %input.btn.btn-default{:type => "radio", :value => "disabler"}/

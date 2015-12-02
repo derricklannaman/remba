@@ -14,4 +14,8 @@ module ApplicationHelper
     attachment_url(item, :item_image, :fill, 300, 300)
   end
 
+  def greetings
+    current_user.first_name
+  end
+
 end
