@@ -5,8 +5,9 @@
     %ol.questions
       %li
         %span
-          = f.label :stylist, "Yes, I am a fashion stylist"
-        = f.check_box :stylist
+          = f.label :stylist, "Are you a fashion stylist?"
+        =# f.check_box :stylist
+        = f.text_field :stylist
       %li
         %span
           = f.label :first_name
@@ -30,6 +31,7 @@
         %span
           = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: "off"
+
     .controls
       %button.next.fa.fa-arrow-circle-right.fa-2x
       .progress
@@ -48,7 +50,6 @@
 
 
 
-      .actions
-        =# f.submit "Sign up"
+
 
 =# render "user/shared/links"
