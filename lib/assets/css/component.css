@@ -152,7 +152,7 @@
 }
 
 .next::after {
-	position: absolute;
+/*	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -166,7 +166,7 @@
 	line-height: 2;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale;*/
 }
 
 .next.show {
@@ -310,6 +310,10 @@
 	display: none;
 }
 
+button.next.fa.fa-arrow-circle-right.fa-2x.show {
+  font-size: 59px !important;
+}
+
 /* Remove IE clear cross */
 input[type=text]::-ms-clear {
     display: none;
@@ -320,10 +324,16 @@ input[type=text]::-ms-clear {
 	.simform {
 		font-size: 1.8em;
 	}
+	button.next.fa.fa-arrow-circle-right.fa-2x.show {
+	  font-size: 46px !important;
+	}
 }
 
 @media screen and (max-width: 33.5625em) {
 	.simform {
 		font-size: 1.2em;
+	}
+	button.next.fa.fa-arrow-circle-right.fa-2x.show {
+	  font-size: 36px !important;
 	}
 }
