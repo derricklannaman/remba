@@ -1,36 +1,54 @@
 %h2 User Sign up
-= form_for @user, url: user_registration_path do |f|
+= form_for @user, url: user_registration_path, html: { id: 'theForm', class: 'simform', autocomplete: 'off' } do |f|
   = devise_error_messages!
-  .field
-    = f.label :stylist, "Yes, I am a fashion stylist"
-    %br/
-    = f.check_box :stylist
+  .simform-inner
+    %ol.questions
+      %li
+        %span
+          = f.label :stylist, "Yes, I am a fashion stylist"
+        = f.check_box :stylist
+      %li
+        %span
+          = f.label :first_name
+        = f.text_field :first_name
+      %li
+        %span
+          = f.label :last_name
+        = f.text_field :last_name
+      %li
+        %span
+          = f.label :email
+        = f.email_field :email
+      %li
+        %span
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+        = f.password_field :password, autocomplete: "off"
+      %li
+        %span
+          = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
+    .controls
+      %button.next.fa.fa-arrow-circle-right.fa-2x
+      .progress
+      %span.number
+        %span.number-current
+        %span.number-total
+      %span.error-message
+      .press_enter_msg
+        %span Please press enter
+        %em or
+        %span
+          %i.fa.fa-arrow-circle-right
+        %span to continue
 
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
+    %span.final-message
 
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
 
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
+
+      .actions
+        =# f.submit "Sign up"
+
 =# render "user/shared/links"
