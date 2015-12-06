@@ -3,6 +3,9 @@
   = devise_error_messages!
   .simform-inner
     %ol.questions
+      %span.number
+        %span.number-current
+        %span.number-total
       %li
         %span
           = f.label :stylist, "Are you a fashion stylist?"
@@ -35,9 +38,6 @@
       %button.next.fa.fa-arrow-circle-right.fa-2x
       = f.button(arrow_circle_font_icon, class: 'hidden', id: 'final-submission')
       .progress
-      %span.number
-        %span.number-current
-        %span.number-total
       %span.error-message
       .press_enter_msg
         %span Please press enter
@@ -47,9 +47,5 @@
         %span to continue
 
     %span.final-message
-
-
-
-
 
 =# render "user/shared/links"

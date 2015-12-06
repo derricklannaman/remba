@@ -202,7 +202,7 @@
 	margin: 0.4em 0;
 	width: 3em;
 	font-weight: 700;
-	font-size: 0.4em;
+	font-size: 0.7em;
 }
 
 .simform .number:after {
@@ -318,6 +318,7 @@ button.next.fa.fa-arrow-circle-right.fa-2x.show {
 
 .press_enter_msg {
 	font-size: 25px;
+	opacity: 0.6;
 }
 
 button#final-submission {
