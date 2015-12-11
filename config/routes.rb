@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get "dashboard" => "dashboards#show", as: "dashboard"
   get "fashionboard" => "fashionboards#show", as: "fashionboard"
-  get "adviceboard" => "adviceboards#show", as: "adviceboard"
 
   get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
 
