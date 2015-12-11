@@ -1,3 +1,27 @@
-.stylist_info {
+.stylist-listing-panel {
+  width: 700px;
+  border: 1px solid #999;
+  margin: 10px 2px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 12px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: #FFF;
+}
 
+.profile-image {
+  border-right: 1px solid #999;
+  width: 130px;
+  height: 98px;
+  margin-left: -10px;
+  float: left;
+  margin-top: -6px;
+  border-radius: 100px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+}
+
+.profile-brief {
+  margin-left: 150px;
 }

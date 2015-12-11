@@ -1,6 +1,5 @@
 =# link_to stylist., feed_user_path(user)
-
-%h3= stylist.email
+%h3= stylist.first_name
 - if stylist.followed_by(current_stylist)
   = button_to "Remove", follow_path(stylist.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
 - else
