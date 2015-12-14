@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    normalize_user_inputs
     if stylist_sign_up?
       new_sign_up_user
       @user.status = "Stylist"
@@ -38,16 +39,29 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def normalize_user_inputs
+    if params[:user][:first_name].present?
+      params[:user][:first_name].capitalize!
+    end
+    if params[:user][:last_name].present?
+      params[:user][:last_name].capitalize!
+    end
+  end
+
   def member_sign_up?
-    if params[:user][:stylist] == 'no'
-      params[:user][:stylist] = 0
+    if registered_as_stylist == 'no'
+      registered_as_stylist = 0
     end
   end
 
   def stylist_sign_up?
-    if params[:user][:stylist].downcase == 'yes'
-      params[:user][:stylist] = 1
+    if registered_as_stylist.downcase == 'yes'
+      registered_as_stylist = 1
     end
+  end
+
+  def registered_as_stylist
+    params[:user][:stylist]
   end
 
   def user_params
