@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_one :dashboard, dependent: :destroy
   has_one :fashionboard, dependent: :destroy
   has_one :team, dependent: :destroy
+  has_one :profile, dependent: :destroy
   has_many :follows
   has_many :items, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
@@ -31,6 +32,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  attachment :profile_image
 
   scope :show_only_stylist, -> { where(status: 'Stylist') }
   scope :stylists, -> { where(stylist: true) }
@@ -46,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def create_fashionboard
-    Fashionboard.create(user_id: self.id) if is_member?
+    Fashionboard.create(user_id: self.id) unless is_member?
   end
 
   def create_team
