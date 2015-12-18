@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
 
-  resources :profiles
+  get "profile" => "users#show", as: 'profile'
+  patch "users/:id/image" => "users#update_profile_image", as: "update_image"
+
   resources :stylists,  only: [:index]
   resources :items,     only: [:new, :create]
   resources :pins,      only: [:create, :destroy]
