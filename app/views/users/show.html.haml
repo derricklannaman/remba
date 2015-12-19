@@ -2,11 +2,11 @@
   = "#{@user.first_name} #{@user.last_name} Profile"
 
 .profile-picture
-  = image_tag('default-profile.png', size: "200x200", class: 'default-profile')
-  = image_tag attachment_url(@user, :profile_image, :fill, 200, 200, format: "jpg")
+  = profile_picture
+%div
 .profile-picture-uploader
   = form_for @user, url: update_image_path(current_user.id) do |f|
-    = f.attachment_field :profile_image
+    = f.attachment_field :profile_image, direct: true
     = f.submit 'Add Picture', class: 'btn btn-primary'
 
 

@@ -16,6 +16,7 @@
           %li= link_to "team", team_path(fashion_team.id) unless fashion_team.blank?
           %li= link_to 'Fashion board', fashionboard_path if current_user.is_member?
           %li= link_to "sign out", destroy_user_session_path, method: :delete
+
         - else
           %span= link_to "How it works", "#"
           |
@@ -24,3 +25,6 @@
           %span= link_to "sign up", new_user_registration_path
           |
           \#{link_to "sign in", new_user_session_path}
+      - if user_signed_in?
+        %span.nav-avatar
+          = profile_picture_mini_thumbnail

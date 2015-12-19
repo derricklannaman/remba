@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   end
 
   def update_profile_image
-    @user = User.find(params[:id])
-    @user.update(user_params)
+    user = User.find(params[:id])
+    user.update(user_params)
     redirect_to :back
   end
 
