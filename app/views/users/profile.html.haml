@@ -1,0 +1,10 @@
+%h1
+  = "#{@user.first_name} #{@user.last_name} Profile"
+
+.profile-picture
+  = profile_picture
+%div
+.profile-picture-uploader
+  = form_for @user, url: update_image_path(current_user.id) do |f|
+    = f.attachment_field :profile_image, direct: true
+    = f.submit 'Add Picture', class: 'btn btn-primary'

@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def profile
+    @user = current_user
+  end
+
   def update_profile_image
     user = User.find(params[:id])
     user.update(user_params)

@@ -8,14 +8,14 @@ Rails.application.routes.draw do
 
   get "add_stylist/:id" => "teams#add_stylist", as: "add-stylist"
 
-  get "profile" => "users#show", as: 'profile'
+  get "profile" => "users#profile", as: 'profile'
   patch "users/:id/image" => "users#update_profile_image", as: "update_image"
 
   resources :stylists,  only: [:index]
   resources :items,     only: [:new, :create]
   resources :pins,      only: [:create, :destroy]
   resources :follows,   only: [:create, :destroy]
-  resources :users,     only: [:index]
+  resources :users,     only: [:index, :show]
   resources :teams,     only: [:show]
   resources :feedbacks, only: [:new, :create, :destroy]
 

@@ -1,11 +1,13 @@
-.stylist-listing-tile
-  = image_tag('binding_dark.png', class: "profile-image")
-  .profile-brief
-    %h3= link_to user.first_name, feed_user_path(user)
-    - if user.followed_by(current_user)
-      = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
-    - else
-      = form_for :follow, url: follows_path do |f|
-        = f.hidden_field :target_id, value: user.id
-        = button_to "Add To Team", nil, class: "btn btn-warning btn-sm btn-default"
-        / <input class="btn btn-primary btn-sm btn-default" type="submit" value="Follow">
+= link_to(user) do
+  .stylist-listing-tile
+    = attachment_image_tag(user, :profile_image, :fill, 300, 300, class: "stylist-card", format: "jpg", fallback: "default-profile.png")
+    .profile-section
+      .profile-info
+        %h3= user.first_name
+        - if user.followed_by(current_user)
+          = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
+        - else
+          = form_for :follow, url: follows_path do |f|
+            = f.hidden_field :target_id, value: user.id
+            = button_to "Add To Team", nil, class: "btn btn-warning btn-sm btn-default"
+            / <input class="btn btn-primary btn-sm btn-default" type="submit" value="Follow">

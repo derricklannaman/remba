@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def profile_picture
-    if no_profile_image_exist
+    if no_profile_image_exist?
       image_tag('default-profile.png', size: "200x200", class: 'default-profile')
     else
       attachment_image_tag(current_user, :profile_image, :fill, 200, 200,
