@@ -2,5 +2,5 @@
 
 = link_to "Add new item", new_item_path, class: 'btn btn-default'
 
-- for activity in @activities
+- @activities.each do |activity|
   = render_activity activity
