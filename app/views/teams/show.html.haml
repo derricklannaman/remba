@@ -6,6 +6,4 @@
 - @style_team.each do |user|
 
   - if user.followed_by(current_user)
-    .stylist-fashionboard-panel
-      %h3= link_to user.email, feed_user_path(user)
-      = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
+    = render partial: "shared/stylist_listing_tiles", locals: { user: user }
