@@ -10,4 +10,10 @@ class HomeController < ApplicationController
     @time = time.strftime('%m/%d/%Y')
   end
 
+  def how_it_works
+  end
+
+  def about
+  end
+
 end
