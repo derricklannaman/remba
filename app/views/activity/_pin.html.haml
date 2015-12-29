@@ -1,32 +1,33 @@
-.item-thumbnail
+- activity_id = activity['object'].id
+= link_to item_path(activity_id) do
 
-  = image_tag display_pinned_image activity
-  .feedback-results
+  .item-thumbnail
+    = image_tag display_pinned_image activity
+    .feedback-results
 
-  .feedback-form-container
-    = form_tag({controller: "feedbacks", action: "create"}, method: "post") do
-      - activity_id = activity['object'].id
-      = hidden_field_tag(:item_id, activity_id)
-      .form-group.feedback-button-group
-        - feedback_count activity
+    .feedback-form-container
+      = form_tag({controller: "feedbacks", action: "create"}, method: "post") do
+        = hidden_field_tag(:item_id, activity_id)
+        .form-group.feedback-button-group
+          - feedback_count activity
 
-        = radio_button_tag "name_#{activity_id}", 'Like it'
-        = label_tag "name_#{activity_id}_Like_it", display_feedback_counter_icon(like_it_count), value: "Like it"
+          = radio_button_tag "name_#{activity_id}", 'Like it'
+          = label_tag "name_#{activity_id}_Like_it", display_feedback_counter_icon(like_it_count), value: "Like it"
 
-        = radio_button_tag "name_#{activity_id}", 'Love it'
-        = label_tag "name_#{activity_id}_Love_it", display_feedback_counter_icon(love_it_count), value: "Love it"
+          = radio_button_tag "name_#{activity_id}", 'Love it'
+          = label_tag "name_#{activity_id}_Love_it", display_feedback_counter_icon(love_it_count), value: "Love it"
 
-        = radio_button_tag "name_#{activity_id}", 'Leave it'
-        = label_tag "name_#{activity_id}_Leave_it", display_feedback_counter_icon(leave_it_count), value: "Leave it"
-      .time-of-post
-        posted
-        = time_of_posting activity
-      .posting-info
-        by
-        = activity['actor'].email
-      .form-group.feedback-submit-btn-group
-        - if @feedback.present?
-          = link_to "remove feedback", feedback_path(@feedback.first.id), class: "btn btn-primary btn-sm btn-danger", method: :delete
-        -else
-          = submit_tag "send feedback", class: 'btn btn-warning feedback-btn'
+          = radio_button_tag "name_#{activity_id}", 'Leave it'
+          = label_tag "name_#{activity_id}_Leave_it", display_feedback_counter_icon(leave_it_count), value: "Leave it"
+        .time-of-post
+          posted
+          = time_of_posting activity
+        .posting-info
+          by
+          = activity['actor'].email
+        .form-group.feedback-submit-btn-group
+          - if @feedback.present?
+            = link_to "remove feedback", feedback_path(@feedback.first.id), class: "btn btn-primary btn-sm btn-danger", method: :delete
+          -else
+            = submit_tag "send feedback", class: 'btn btn-warning feedback-btn'
 

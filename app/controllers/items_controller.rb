@@ -13,6 +13,10 @@ class ItemsController < ApplicationController
     redirect_to fashionboard_path
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def item_params
     params.require(:item).permit(:item_image, :message, :title)
   end

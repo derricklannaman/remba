@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   patch "users/:id/image" => "users#update_profile_image", as: "update_image"
 
   resources :stylists,  only: [:index]
-  resources :items,     only: [:new, :create]
+  resources :items,     only: [:new, :create, :show]
   resources :pins,      only: [:create, :destroy]
   resources :follows,   only: [:create, :destroy]
   resources :users,     only: [:index, :show]

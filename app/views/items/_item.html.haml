@@ -1,9 +1,10 @@
-.item-thumbnail
-  - total_feedback_count item
-  = image_tag display_pinned_image item
+= link_to item_path item.id do
+  .item-thumbnail
+    - total_feedback_count item
+    = image_tag display_pinned_image item
 
-  .feedback-response
-    - show_feedback_totals @count
-    - @display_totals.each do |feedback_response|
-      = feedback_response
-  = render "pins/form", item: item, image: :item_image
+    .feedback-response
+      - show_feedback_totals @count
+      - @display_totals.each do |feedback_response|
+        = feedback_response
+    = render "pins/form", item: item, image: :item_image
