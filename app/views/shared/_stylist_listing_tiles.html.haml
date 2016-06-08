@@ -7,6 +7,15 @@
     %span.main-panel
       = user.first_name
       = user.last_name
+    %span.description
+      Hello I am ....
     %span.info Info here
-    %span.teams Teams here
+    %span.teams
+      - if user.followed_by(current_user)
+        = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
+      - else
+        = form_for :follow, url: follows_path do |f|
+          = f.hidden_field :target_id, value: user.id
+          = button_to "Add To Team", nil, class: "btn btn-warning btn-sm btn-default"
+
 
