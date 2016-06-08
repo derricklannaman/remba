@@ -25,7 +25,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def default_user
-    params[:user][:stylist] = 0
+    params[:user][:stylist] = false
     new_sign_up_user
     @user.status = "Member"
   end
@@ -50,18 +50,18 @@ class RegistrationsController < Devise::RegistrationsController
 
   def member_sign_up?
     if registered_as_stylist == 'no'
-      registered_as_stylist = 0
+       params[:user][:stylist] = false
     end
   end
 
   def stylist_sign_up?
-    if registered_as_stylist.downcase == 'yes'
-      registered_as_stylist = 1
+    if registered_as_stylist == 'yes'
+       params[:user][:stylist] = true
     end
   end
 
   def registered_as_stylist
-    params[:user][:stylist]
+    params[:user][:stylist].downcase
   end
 
   def user_params
