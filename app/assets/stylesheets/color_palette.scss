@@ -3,10 +3,11 @@
 ////////////////////////////*/
 
 /* Base Site Colors */
-$base-gray:   #3F5063;
-$light-gray:  #6A7C91;
-$dark-gray:   #242E39;
-$darkest-gray: #192129;
+$base-gray:         #3F5063;
+$light-gray:        #6A7C91;
+$super-light-gray:  lighten($light-gray, 45%);
+$dark-gray:         #242E39;
+$darkest-gray:      #192129;
 
 /* Greens */
 $go-green:           #76cc66;
@@ -26,5 +27,5 @@ $go-green-plus40:    darken($go-green, 40%);
 $text-gray:   #505A66;
 $text-white:  #F1F1F1;
 
-$shadow:      #0F1519;
+$shadow:      $light-gray;
 

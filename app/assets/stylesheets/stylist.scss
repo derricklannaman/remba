@@ -1,6 +1,30 @@
 @import 'color_palette';
 @import "mixins";
 
+.stylist-index-bar {
+  border: 1px solid #999;
+  height: 69px;
+  border-radius: 5px;
+  background-color: $super-light-gray;
+  @include diffused_shadow;
+}
+
+span.info,
+span.teams {
+  width: 150px;
+  border-left: 1px solid $light-gray;
+  position: relative;
+  height: 64px;
+  float: right;
+}
+
+span.main-panel {
+  margin-left: 100px;
+/*  p {
+    color: red;
+  }*/
+}
+
 .stylist-listing-tile {
   float: left;
   width: 300px;
