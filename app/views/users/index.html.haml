@@ -1,3 +1,4 @@
-%h1.page-header Users
-- @users.each do |user|
-  = render partial: "shared/stylist_listing_tiles", locals: { user: user }
+.container
+  %h1.page-header Users
+  - @users.each do |user|
+    = render partial: "shared/stylist_listing_tiles", locals: { user: user }
