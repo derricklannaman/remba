@@ -14,6 +14,7 @@ module ApplicationHelper
     attachment_url(item, :item_image, :fill, 300, 300)
   end
 
+  # Current User Name Formatting
   def first_name
     current_user.first_name
   end
@@ -25,7 +26,6 @@ module ApplicationHelper
   def full_name
     "#{first_name} #{last_name}"
   end
-
 
   def profile_picture
     if no_profile_image_exist?
@@ -42,10 +42,10 @@ module ApplicationHelper
                                 profile_path unless no_profile_image_exist?
   end
 
-  def profile_picture_middle_thumbnail
-    link_to attachment_image_tag(current_user, :profile_image, :fill, 60, 60,
-                                format: "jpg", fallback: "default-profile.png", class: "middle-thumbnail"),
-                                profile_path unless no_profile_image_exist?
+  def profile_picture_middle_thumbnail user
+    link_to attachment_image_tag(user, :profile_image, :fill, 60, 60,
+                                format: "jpg", fallback: "", class: "middle-thumbnail"),
+                                user_path(user.id) unless no_profile_image_exist?
   end
 
   def no_profile_image_exist?
