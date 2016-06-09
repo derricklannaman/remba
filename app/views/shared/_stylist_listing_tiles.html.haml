@@ -1,8 +1,7 @@
 = link_to(user) do
   .stylist-index-bar
     %span.profile
-    - if user.profile_image_id.present?
-      = midsize_thumbnail_user(user)
+    = user_profile_image(user, 60, "middle-thumbnail")
 
     %span.main-panel
       = user.first_name

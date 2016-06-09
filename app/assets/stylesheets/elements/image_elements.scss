@@ -41,6 +41,23 @@ img.attachment.user.profile_image.fallback {
   margin-top: -35px;
 }
 
+img.default-profile {
+  border: 5px solid rgba(0,0,0, .2);
+  border-radius: 26px;
+}
+
+img.fallback-profile {
+  border: 5px solid #FFF;
+  border-radius: 50px;
+  margin: -3px -26px;
+  width: 70px;
+  height: 70px;
+}
+
+img.attachment.user.profile_image {
+  border-radius: 26px;
+}
+
 img.attachment.user.profile_image.middle-thumbnail {
   border: 5px solid #FFF;
   border-radius: 50px;
