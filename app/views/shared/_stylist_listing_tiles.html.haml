@@ -2,14 +2,15 @@
   .stylist-index-bar
     %span.profile
     - if user.profile_image_id.present?
-      = profile_picture_middle_thumbnail(user)
+      = midsize_thumbnail_user(user)
 
     %span.main-panel
       = user.first_name
       = user.last_name
     %span.description
       Hello I am ....
-    %span.info Info here
+    %span.info
+      = link_to "about me", user_path(user.id)
     %span.teams
       - if user.followed_by(current_user)
         = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"

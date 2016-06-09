@@ -36,16 +36,20 @@ module ApplicationHelper
     end
   end
 
-  def profile_picture_mini_thumbnail
+  def minisize_thumbnail_current_user
+    if no_profile_image_exist?
+      link_to image_tag('default-profile.png', size: "200x200", class: 'default-profile')
+    else
     link_to attachment_image_tag(current_user, :profile_image, :fill, 40, 40,
                                 format: "jpg", fallback: "default-profile.png"),
                                 profile_path unless no_profile_image_exist?
+    end
   end
 
-  def profile_picture_middle_thumbnail user
+  def midsize_thumbnail_user user
     link_to attachment_image_tag(user, :profile_image, :fill, 60, 60,
                                 format: "jpg", fallback: "", class: "middle-thumbnail"),
-                                user_path(user.id) unless no_profile_image_exist?
+                                user_path(user.id)
   end
 
   def no_profile_image_exist?

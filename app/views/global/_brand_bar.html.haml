@@ -28,4 +28,4 @@
             \#{link_to "sign in", new_user_session_path}
         - if user_signed_in?
           %span.nav-avatar
-            = profile_picture_mini_thumbnail
+            = minisize_thumbnail_current_user
