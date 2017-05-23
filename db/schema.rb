@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214214319) do
+ActiveRecord::Schema.define(version: 20160609213231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,16 +103,20 @@ ActiveRecord::Schema.define(version: 20151214214319) do
   add_index "pins", ["item_id"], name: "index_pins_on_item_id", using: :btree
   add_index "pins", ["user_id"], name: "index_pins_on_user_id", using: :btree
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profile_contents", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
     t.string   "profile_image_id"
     t.text     "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "profile_title"
+    t.text     "first_section"
+    t.text     "second_section"
+    t.text     "third_section"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  add_index "profile_contents", ["user_id"], name: "index_profile_contents_on_user_id", using: :btree
 
   create_table "stylists", force: :cascade do |t|
     t.datetime "created_at", null: false

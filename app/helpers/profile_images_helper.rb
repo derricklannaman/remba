@@ -8,7 +8,7 @@ module ProfileImagesHelper
     end
   end
 
-  def current_user_profile_image user, img_size, css_style
+  def show_current_user_profile_image user, img_size, css_style
     if profile_image_exist?(user)
       link_to user_image(user, img_size, css_style), profile_path
     else
@@ -16,7 +16,7 @@ module ProfileImagesHelper
     end
   end
 
-  def user_profile_image user, img_size, css_style
+  def show_user_profile_image user, img_size, css_style
     if profile_image_exist?(user)
       if user == current_user
         link_to user_image(user, img_size, css_style), profile_path

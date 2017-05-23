@@ -1,4 +1,19 @@
-%h1
-  = "Hello, My name is #{@user.first_name} #{@user.last_name}."
+.container
+  %h1
+    = "Hello, My name is #{@user.first_name} #{@user.last_name}."
+
+  - unless @profile_info.blank?
+    = @profile_info.name
+    %br
+    =@profile_info.description
+
+    %br
+    =@profile_info.profile_title
+    %br
+    =@profile_info.first_section
+    %br
+    =@profile_info.second_section
+    %br
+    =@profile_info.third_section
 
 

@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_one :dashboard, dependent: :destroy
   has_one :fashionboard, dependent: :destroy
   has_one :team, dependent: :destroy
-  has_one :profile, dependent: :destroy
+  has_one :profile_content, dependent: :destroy
   has_many :follows
   has_many :items, dependent: :destroy
   has_many :feedbacks, dependent: :destroy

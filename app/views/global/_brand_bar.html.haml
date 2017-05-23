@@ -28,4 +28,5 @@
             \#{link_to "sign in", new_user_session_path}
         - if user_signed_in?
           %span.nav-avatar
-            = current_user_profile_image(current_user, 40, "default-profile")
+            = full_name
+            = show_current_user_profile_image(current_user, 40, "default-profile")

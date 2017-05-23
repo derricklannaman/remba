@@ -1,0 +1,5 @@
+/ Displays the mini version of the stylist listing bar
+
+- @style_team.each do |user|
+  - if user.followed_by(current_user)
+    = render partial: "shared/stylist_listing_tiles_minimized", locals: { user: user }

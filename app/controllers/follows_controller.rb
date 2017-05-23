@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
       invoke_stream_rails(follow)
     end
     flash[:success] = "#{stylist_name(follow.target_id)} added to Team!"
-    redirect_to team_path(fashion_team.id)
+    redirect_to fashionboard_path
   end
 
   def destroy
@@ -23,7 +23,7 @@ class FollowsController < ApplicationController
       StreamRails.feed_manager.unfollow_user(follow.user_id, follow.target_id)
     end
     flash[:success] = 'Removed from Team!'
-    redirect_to team_path(fashion_team.id)
+    redirect_to fashionboard_path
   end
 
   private

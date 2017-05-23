@@ -1,16 +1,16 @@
 = link_to(user) do
-  .stylist-index-bar
+  .stylist-index-bar-minimized
     %span.profile
     = show_user_profile_image(user, 60, "middle-thumbnail")
 
     %span.main-panel
       = user.first_name
-      = user.last_name
-    %span.description
-      Hello I am ....
-    %span.info
-      = link_to "about me", user_path(user.id)
-    %span.teams
+
+      %span.team-counter
+        %span belongs to
+        %span 5
+        %span team
+    %span.actions
       - if user.followed_by(current_user)
         = button_to "Remove from Team", follow_path(user.followed_by(current_user)), method: :delete, :class => "btn btn-primary btn-sm btn-danger"
       - else

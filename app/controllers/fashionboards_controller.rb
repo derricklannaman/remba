@@ -3,6 +3,8 @@ class FashionboardsController < ApplicationController
 
   def show
     team_stylist_count
+    @style_team = current_user.current_team
+
     @items = current_user.items.order('created_at DESC')
     locals pass_in: { count: team_stylist_count }
   end
